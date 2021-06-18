@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:get/get.dart';
+import 'package:utubevyappar/services/authenticate.dart';
 
 class Welcome extends StatelessWidget {
   @override
@@ -43,18 +44,30 @@ class Welcome extends StatelessWidget {
                   fontSize: 22,
                   letterSpacing: 1.3),
             ),
-            SignInButton(
-              Buttons.Google,
-              text: "Sign up with Google",
-              onPressed: () {
-                /*new SignIn().signInWithGoogle().then((result) {
-                  if (result != null) {
-                    Get.to(HomePage());
-                  }
-                });*/
-                Get.toNamed("/home");
+            FutureBuilder(
+              future: Authentication.initializeFirebase(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Error initializing Firebase');
+                } else if (snapshot.connectionState == ConnectionState.done) {
+                  return SignInButton(
+                    Buttons.Google,
+                    text: "Sign up with Google",
+                    onPressed: () {
+                      Authentication.signInWithGoogle().then(
+                            (result) => {if (result != null) Get.toNamed("/home")},
+                      );
+                    },
+                  );
+                }
+                return CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    Colors.black,
+                  ),
+                );
               },
-            )
+            ),
+
           ],
         ),
       ),

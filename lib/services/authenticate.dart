@@ -1,19 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class Authentication {
   static Future<FirebaseApp> initializeFirebase() async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
-
-    // TODO: Add auto login logic
-
     return firebaseApp;
   }
 
-  static Future<User?> signInWithGoogle({required BuildContext context}) async {
+  static Future<User?> signInWithGoogle() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;
 
@@ -36,6 +32,19 @@ class Authentication {
             await auth.signInWithCredential(credential);
 
         user = userCredential.user;
+        if (user != null) {
+          await assertChecks(user, auth);
+          // Store the retrieved data
+          print(user.displayName);
+          print(user.uid);
+          /*email = user.email;
+          imageUrl = user.photoURL;
+          if (name.contains(" ")) {
+            name = name.substring(0, name.indexOf(" "));
+          }
+          print('signInWithGoogle succeeded: $user');
+          return '$user';*/
+        }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
           Get.snackbar("error",
@@ -53,9 +62,18 @@ class Authentication {
     return user;
   }
 
-  static Future<void> signOut({required BuildContext context}) async {
-    final GoogleSignIn googleSignIn = GoogleSignIn();
+  static Future<void> assertChecks(User user, FirebaseAuth auth) async {
+    assert(!user.isAnonymous);
+    assert(await user.getIdToken() != null);
+    final User? currentUser = auth.currentUser;
+    assert(user.uid == currentUser!.uid);
+    assert(user.email != null);
+    assert(user.displayName != null);
+    assert(user.photoURL != null);
+  }
 
+  static Future<void> signOut() async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
     try {
       await FirebaseAuth.instance.signOut();
     } catch (e) {
