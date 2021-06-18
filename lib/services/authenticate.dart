@@ -6,6 +6,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 class Authentication {
   static Future<FirebaseApp> initializeFirebase() async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      Get.toNamed("/home");
+    }
     return firebaseApp;
   }
 
