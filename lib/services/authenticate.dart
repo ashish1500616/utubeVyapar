@@ -8,7 +8,7 @@ class Authentication {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      Get.toNamed("/home");
+      Get.toNamed("/sign_in_form", arguments: user);
     }
     return firebaseApp;
   }
@@ -34,7 +34,10 @@ class Authentication {
       try {
         final UserCredential userCredential =
             await auth.signInWithCredential(credential);
-
+        if (userCredential.additionalUserInfo!.isNewUser) {
+          //User logging in for the first time
+          // Redirect user to tutorial.
+        }
         user = userCredential.user;
         if (user != null) {
           await assertChecks(user, auth);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:utubevyappar/views/homepage.dart';
+import 'package:utubevyappar/views/sign_in_form.dart';
 import 'package:utubevyappar/views/welcome.dart';
 
 main() async {
@@ -19,6 +20,7 @@ class App extends StatelessWidget {
       getPages: [
         // GetPage(name: '/home', page: () => HomePage(), binding: HomeBinding()),
         GetPage(name: '/home', page: () => HomePage()),
+        GetPage(name: '/sign_in_form', page: () => SignInForm()),
       ],
     );
   }
