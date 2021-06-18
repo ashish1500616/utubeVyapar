@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,7 @@ class Welcome extends StatelessWidget {
               height: MediaQuery.of(context).size.height * .45,
             ),
             Text(
-              "Watch Videos\n To Grow Your Views",
+              "Flop videos to top videos",
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontWeight: FontWeight.w600,
