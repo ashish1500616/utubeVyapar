@@ -8,8 +8,23 @@ class FetchUserService extends GetConnect {
     final response = await get('https://vipa3p.deta.dev/api/random');
     final aofdata = json.decode(json.encode(response.body)) as List<dynamic>;
     var data = aofdata[0];
+    /* Verify  If User Has Points Or Not.*/
+    var points = 0;
+    var randomCampaign;
+    /* Check if the user has points*/
+    while (points < 30) {
+      randomCampaign = getRandomElement(data);
+      var uuid = randomCampaign["uuid"];
+      final userinfo = await get('https://vipa3p.deta.dev/api/users/$uuid');
+      final userList = json.decode(json.encode(userinfo.body)) as List<dynamic>;
+      points = int.parse(userList[0][0]["points"].toString());
+    }
+    return randomCampaign["video_url"];
+  }
+
+  getRandomElement(data) {
     final _random = new Random();
     var element = data[_random.nextInt(data.length)];
-    return element["video_url"];
+    return element;
   }
 }

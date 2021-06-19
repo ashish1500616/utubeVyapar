@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:utubevyappar/services/fetch_user_service.dart';
 
 class WatchVideoController extends GetxController {
-  String _videoURL = "https://youtu.be/b-VzI-X3C8c";
+  String _videoURL = "https://youtu.be/XpA9ioTdEKs";
   CountDownController _controller = CountDownController();
   FetchUserService fetchUserService = Get.put(FetchUserService());
 
