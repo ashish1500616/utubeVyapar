@@ -13,12 +13,14 @@ class FetchUserService extends GetConnect {
     var randomCampaign;
     /* Check if the user has points*/
     while (points < 30) {
+      print("Finding User With Credits Greater Than 30");
       randomCampaign = getRandomElement(data);
       var uuid = randomCampaign["uuid"];
       final userinfo = await get('https://vipa3p.deta.dev/api/users/$uuid');
       final userList = json.decode(json.encode(userinfo.body)) as List<dynamic>;
       points = int.parse(userList[0][0]["points"].toString());
     }
+    print("Found Campaign with points " + points.toString());
     return randomCampaign["video_url"];
   }
 
@@ -27,4 +29,6 @@ class FetchUserService extends GetConnect {
     var element = data[_random.nextInt(data.length)];
     return element;
   }
+
+  /* Add a function to reduce the credit value from the user accound*/
 }
