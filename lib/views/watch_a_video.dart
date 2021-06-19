@@ -1,7 +1,7 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:utubevyappar/controller/youtube_player_controller.dart';
+import 'package:utubevyappar/controller/watch_video_controller.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class WatchVideo extends StatefulWidget {
@@ -13,8 +13,8 @@ class _WatchVideoState extends State<WatchVideo> {
   @override
   Widget build(BuildContext context) {
     final _mediaQuery = MediaQuery.of(context).size;
-    final YoutubeVideoController youtubeVideoController =
-        Get.put(YoutubeVideoController());
+    final WatchVideoController youtubeVideoController =
+        Get.put(WatchVideoController());
     var videoUrl = youtubeVideoController.getVideoURL();
     CountDownController _countDownController =
         youtubeVideoController.getController();
@@ -28,10 +28,12 @@ class _WatchVideoState extends State<WatchVideo> {
       ),
     );
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.lightBlueAccent,
+      ),
       body: Column(
         children: [
-          /*Container(
+          Container(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: YoutubePlayer(
@@ -39,7 +41,7 @@ class _WatchVideoState extends State<WatchVideo> {
                 aspectRatio: 16 / 9,
               ),
             ),
-          ),*/
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:utubevyappar/services/fetch_user_service.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -35,7 +36,10 @@ class HomePage extends StatelessWidget {
           Row(
             children: [
               InkWell(
-                onTap: () => {print("Tapped"), Get.toNamed('/watchVideo')},
+                onTap: () => {
+                  print("Tapped"),
+                  Get.toNamed('/watchVideo'),
+                },
                 child: Container(
                   width: _mediaQuery.width * 0.5,
                   child: Column(
