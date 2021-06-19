@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:utubevyappar/controller/home_page_controller.dart';
 import 'package:utubevyappar/services/fetch_user_service.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    HomePageController homePageController = Get.put(HomePageController());
     String currentUserName =
         FirebaseAuth.instance.currentUser!.displayName.toString();
     currentUserName = currentUserName[0].toUpperCase() +
