@@ -56,7 +56,7 @@ class Welcome extends StatelessWidget {
                     text: "Sign up with Google",
                     onPressed: () {
                       Authentication.signInWithGoogle().then(
-                            (result) => {if (result != null) Get.toNamed("/home")},
+                        (result) => {if (result != null) Get.toNamed("/home")},
                       );
                     },
                   );
@@ -68,7 +68,6 @@ class Welcome extends StatelessWidget {
                 );
               },
             ),
-
           ],
         ),
       ),

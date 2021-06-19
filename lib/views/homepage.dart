@@ -7,6 +7,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     String currentUserName =
         FirebaseAuth.instance.currentUser!.displayName.toString();
+    currentUserName = currentUserName[0].toUpperCase() +
+        currentUserName.substring(1).toLowerCase();
     final _mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(),
@@ -33,10 +35,7 @@ class HomePage extends StatelessWidget {
           Row(
             children: [
               InkWell(
-                onTap: () => {
-                  print("Tapped"),
-                  Get.toNamed('/watchVideo')
-                },
+                onTap: () => {print("Tapped"), Get.toNamed('/watchVideo')},
                 child: Container(
                   width: _mediaQuery.width * 0.5,
                   child: Column(
