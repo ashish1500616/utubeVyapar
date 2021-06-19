@@ -8,7 +8,6 @@ class WatchVideoController extends GetxController {
   FetchUserService fetchUserService = Get.put(FetchUserService());
 
   String getVideoURL() {
-    // ignore: unnecessary_null_comparison
     fetchUserService.fetchRandomVideo().then((value) => _videoURL = value);
     print(_videoURL);
     if (_videoURL == null) {
