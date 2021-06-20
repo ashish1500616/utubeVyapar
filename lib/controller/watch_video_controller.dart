@@ -6,14 +6,13 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 class WatchVideoController extends GetxController {
   CountDownController _timerController = CountDownController();
   FetchUserService fetchUserService = Get.put(FetchUserService());
-  var campaignVideoUrl = "".obs;
   var youtubePlayerController;
 
   @override
   void onInit() {
     super.onInit();
     youtubePlayerController = YoutubePlayerController(
-      // TODO:  Change hard coded inital video to constant
+      // TODO:  Change hard coded initial video to constant
       initialVideoId:
           YoutubePlayer.convertUrlToId("https://youtu.be/cpP-fCo8Dn4")
               .toString(),
@@ -28,9 +27,10 @@ class WatchVideoController extends GetxController {
   }
 
   getAndPlayRandomCampaign() async {
+    // Get a new random url .
+    // Change it to get data from database rather than the api.
     await fetchUserService.fetchRandomVideo();
-    campaignVideoUrl.value = fetchUserService.videoURL.value;
-    youtubeControllerLoadAndPlayVideo(campaignVideoUrl.value);
+    youtubeControllerLoadAndPlayVideo(fetchUserService.campaignVideoURL);
   }
 
   void youtubeControllerLoadAndPlayVideo(String ytVideoUrl) {

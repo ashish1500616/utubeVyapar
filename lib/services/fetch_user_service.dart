@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:get/get.dart';
 
 class FetchUserService extends GetConnect {
-  var videoURL = "".obs;
+  var campaignVideoURL = "";
 
   fetchRandomVideo() async {
     // Fetch Response Object From API.
@@ -16,11 +16,11 @@ class FetchUserService extends GetConnect {
     // Get the random campaign element from the list.
     var randomCampaignElement = data[new Random().nextInt(data.length)];
     // Get the video url of the random campaign and set to current global videoURL
-    videoURL.value = randomCampaignElement["video_url"];
+    campaignVideoURL = randomCampaignElement["video_url"];
     // Return video url from the function.
     print('FetchUserService.fetchRandomVideo ****** Api called  : : : ' +
-        videoURL.value);
-    return videoURL.value;
+        campaignVideoURL);
+    return campaignVideoURL;
   }
 
   Future<Response<dynamic>> fetchApiResponse() async {
