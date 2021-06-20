@@ -2,22 +2,36 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class FetchUserService extends GetConnect {
   var campaignVideoURL = "";
   var randomCampaignElement;
+  final videoUrlStorage = GetStorage();
+
+  @override
+  void onInit() {
+    super.onInit();
+    videoUrlStorage.write("campaignElementList", "");
+  }
+
   fetchRandomVideo() async {
-    // Fetch Response Object From API.
-    Response<dynamic> response = await fetchResponseFromRandomApi();
-    // Cast the response object into list.
-    var data = getListOfDataFromResponseBody(response);
+    var data;
+    if (videoUrlStorage.read("campaignElementList") == "") {
+      // Fetch Response Object From API.
+      print('Fetching Data From API.');
+      Response<dynamic> response = await fetchResponseFromRandomApi();
+      // Cast the response object into list.
+      data = getListOfDataFromResponseBody(response);
+      videoUrlStorage.write('campaignElementList', data);
+    } else {
+      data = videoUrlStorage.read("campaignElementList");
+    }
     // Get the random campaign element from the list.
     randomCampaignElement = data[new Random().nextInt(data.length)];
     // Get the video url of the random campaign and set to current global videoURL
     campaignVideoURL = randomCampaignElement["video_url"];
     // Return video url from the function.
-    print('FetchUserService.fetchRandomVideo ****** Api called  : : : ' +
-        campaignVideoURL);
     return campaignVideoURL;
   }
 
