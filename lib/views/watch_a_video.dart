@@ -1,7 +1,9 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:utubevyappar/controller/watch_video_controller.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class WatchVideo extends StatefulWidget {
   @override
@@ -25,7 +27,7 @@ class _WatchVideoState extends State<WatchVideo> {
       body: Column(
         children: [
           // Obx(() => Text(watchVideoController.campaignVideoUrl.value)),
-          /*          Container(
+          Container(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: YoutubePlayer(
@@ -33,7 +35,7 @@ class _WatchVideoState extends State<WatchVideo> {
                 aspectRatio: 16 / 9,
               ),
             ),
-          ),*/
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -104,6 +106,7 @@ class _WatchVideoState extends State<WatchVideo> {
                     // This Callback will execute when the Countdown Ends.
                     onComplete: () {
                       watchVideoController.getAndPlayRandomCampaign();
+                      // Pass Value instead of hard coded value
                       watchVideoController.settlePoints(100);
                       _countDownController.restart();
                     },
@@ -120,7 +123,27 @@ class _WatchVideoState extends State<WatchVideo> {
                   ),
                 ),
               ),
-              Obx(() => Text(watchVideoController.currentPoint.value))
+              Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    child: Text("Points"),
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    child: Obx(
+                      () => (watchVideoController.currentPoint.value == "0" ||
+                              watchVideoController.isSettlingPoints.isTrue)
+                          ? SpinKitChasingDots(color: Colors.blue)
+                          : Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                  watchVideoController.currentPoint.value)),
+                    ),
+                  )
+                ],
+              ),
             ],
           ),
         ],

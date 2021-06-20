@@ -6,8 +6,9 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 class WatchVideoController extends GetxController {
   CountDownController _timerController = CountDownController();
   FetchUserService fetchUserService = Get.put(FetchUserService());
-  var youtubePlayerController;
+  late YoutubePlayerController youtubePlayerController;
   var currentPoint = "0".obs;
+  var isSettlingPoints = false.obs;
 
   @override
   void onInit() {
@@ -54,8 +55,10 @@ class WatchVideoController extends GetxController {
   }
 
   void settlePoints(value) {
+    isSettlingPoints.value = true;
     fetchUserService.increasePoints(value);
     fetchUserService.reducePoints(value);
     getUserCurrentPoints();
+    isSettlingPoints.value = false;
   }
 }
