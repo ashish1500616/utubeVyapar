@@ -126,7 +126,13 @@ class _WatchVideoState extends State<WatchVideo> {
                 children: [
                   Container(
                     margin: EdgeInsets.only(top: 10),
-                    child: Text("Points"),
+                    child: Text("Coins",
+                        style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 1.0,
+                        )),
                   ),
                   Container(
                     height: 100,
@@ -137,8 +143,15 @@ class _WatchVideoState extends State<WatchVideo> {
                           ? SpinKitChasingDots(color: Colors.blue)
                           : Align(
                               alignment: Alignment.center,
-                              child: Text(
-                                  watchVideoController.currentPoint.value)),
+                              child:
+                                  Text(watchVideoController.currentPoint.value,
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500,
+                                        letterSpacing: 1.0,
+                                      )),
+                            ),
                     ),
                   )
                 ],

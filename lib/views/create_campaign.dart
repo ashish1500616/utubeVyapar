@@ -94,14 +94,7 @@ class CreateCampaign extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: ElevatedButton(
-                onPressed: () => {
-                  createCampaignController.submitVideoLink()
-                  // print(addressController.editingText.value),
-                  // if (addressController.editingText.isTrue)
-                  //   {addressController.saveEditedAddress()}
-                  // else
-                  //   {addressController.validate_and_add()}
-                },
+                onPressed: () => {createCampaignController.submitVideoLink()},
                 child: Text(
                   "Submit Video",
                   style: TextStyle(

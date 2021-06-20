@@ -46,7 +46,8 @@ class WatchVideoController extends GetxController {
     // Play the loaded video.
     //Wait for the youtubePlayer to get the meta data.
     await Future.delayed(Duration(seconds: 2));
-    currentDuration.value = youtubePlayerController.metadata.duration.inSeconds;
+    currentDuration.value =
+        (youtubePlayerController.metadata.duration.inSeconds / 2).floor();
     print(currentDuration.value);
     restartWithNewDuration();
     youtubePlayerController.play();
