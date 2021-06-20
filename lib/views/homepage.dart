@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:utubevyappar/controller/home_page_controller.dart';
+import 'package:utubevyappar/views/create_campaign.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -69,6 +70,10 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               InkWell(
+                onTap: () {
+                  Get.bottomSheet(CreateCampaign(),
+                      backgroundColor: Colors.white);
+                },
                 child: Container(
                   width: _mediaQuery.width * 0.5,
                   child: Column(
