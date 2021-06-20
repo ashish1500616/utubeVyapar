@@ -49,7 +49,7 @@ class _WatchVideoState extends State<WatchVideo> {
                     height: _mediaQuery.height * 0.5,
                     // Height of the Countdown Widget.
                     width: _mediaQuery.width * 0.5,
-                    duration: 90,
+                    duration: 15,
                     initialDuration: 0,
                     controller: _countDownController,
                     // Ring Color for Countdown Widget.
@@ -108,7 +108,6 @@ class _WatchVideoState extends State<WatchVideo> {
                       watchVideoController.getAndPlayRandomCampaign();
                       // Pass Value instead of hard coded value
                       watchVideoController.settlePoints(100);
-                      _countDownController.restart();
                     },
                   ),
                 ),

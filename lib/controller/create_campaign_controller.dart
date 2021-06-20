@@ -27,7 +27,9 @@ class CreateCampaignController extends GetxController {
           colorText: Colors.black87);
       // Get.back();
     } else {
-      Get.snackbar("Error", "Unable to push video to public pool",
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      Get.snackbar("response.statusCode", "Unable to push video to public pool",
           backgroundColor: Colors.red, snackPosition: SnackPosition.TOP);
     }
   }

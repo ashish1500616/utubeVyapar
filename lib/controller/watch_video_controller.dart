@@ -8,6 +8,7 @@ class WatchVideoController extends GetxController {
   FetchUserService fetchUserService = Get.put(FetchUserService());
   late YoutubePlayerController youtubePlayerController;
   var currentPoint = "0".obs;
+  var currentDuration = 15.obs;
   var isSettlingPoints = false.obs;
 
   @override
@@ -26,6 +27,7 @@ class WatchVideoController extends GetxController {
         autoPlay: true,
       ),
     );
+    // currentDuration.value = youtubePlayerController.metadata.duration.inSeconds;
     getUserCurrentPoints();
   }
 
@@ -36,12 +38,23 @@ class WatchVideoController extends GetxController {
     youtubeControllerLoadAndPlayVideo(fetchUserService.campaignVideoURL);
   }
 
-  void youtubeControllerLoadAndPlayVideo(String ytVideoUrl) {
+  Future<void> youtubeControllerLoadAndPlayVideo(String ytVideoUrl) async {
     // Load a new video
     youtubePlayerController
         .load(YoutubePlayer.convertUrlToId(ytVideoUrl).toString());
+    print(ytVideoUrl);
     // Play the loaded video.
+    //Wait for the youtubePlayer to get the meta data.
+    await Future.delayed(Duration(seconds: 2));
+    currentDuration.value = youtubePlayerController.metadata.duration.inSeconds;
+    print(currentDuration.value);
+    restartWithNewDuration();
     youtubePlayerController.play();
+    update();
+  }
+
+  void restartWithNewDuration() {
+    _timerController.restart(duration: currentDuration.value);
   }
 
   getUserCurrentPoints() {
