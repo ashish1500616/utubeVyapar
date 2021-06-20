@@ -4,29 +4,28 @@ import 'dart:math';
 import 'package:get/get.dart';
 
 class FetchUserService extends GetConnect {
-  String _videoURL = "";
+  var videoURL = "".obs;
 
-  @override
-  Future<void> onInit() async {
-    super.onInit();
-    _videoURL = await fetchRandomVideo();
-  }
-
-  Future<String> fetchRandomVideo() async {
+  fetchRandomVideo() async {
+    // Fetch Response Object From API.
     Response<dynamic> response = await fetchApiResponse();
+    // Cast the response object into list.
     final listOfData = json.decode(json.encode(response.body)) as List<dynamic>;
+    // Get the first element of the list.
     var data = listOfData[0];
+    // Get the random campaign element from the list.
     var randomCampaignElement = data[new Random().nextInt(data.length)];
-    _videoURL = randomCampaignElement["video_url"];
-    return _videoURL;
+    // Get the video url of the random campaign and set to current global videoURL
+    videoURL.value = randomCampaignElement["video_url"];
+    // Return video url from the function.
+    print('FetchUserService.fetchRandomVideo ****** Api called  : : : ' +
+        videoURL.value);
+    return videoURL.value;
   }
-
-  String get videoURL => _videoURL;
 
   Future<Response<dynamic>> fetchApiResponse() async {
+    // Future function to get the data.
     final response = await get('https://vipa3p.deta.dev/api/random');
     return response;
   }
-
-  /* Add a function to reduce the credit value from the user accound*/
 }

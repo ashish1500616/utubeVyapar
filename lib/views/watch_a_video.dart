@@ -13,31 +13,24 @@ class _WatchVideoState extends State<WatchVideo> {
   @override
   Widget build(BuildContext context) {
     final _mediaQuery = MediaQuery.of(context).size;
-    final WatchVideoController youtubeVideoController =
+    final WatchVideoController watchVideoController =
         Get.put(WatchVideoController());
-    var videoUrl = youtubeVideoController.getVideoURL();
     CountDownController _countDownController =
-        youtubeVideoController.getController();
-    YoutubePlayerController _controller = YoutubePlayerController(
-      initialVideoId: YoutubePlayer.convertUrlToId(videoUrl).toString(),
-      flags: YoutubePlayerFlags(
-        enableCaption: false,
-        disableDragSeek: true,
-        hideControls: true,
-        loop: true,
-      ),
-    );
+        watchVideoController.getTimerController();
+    // Calling On Start fix this;
+    // watchVideoController.getRandomCampaignURL();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent,
       ),
       body: Column(
         children: [
+          // Obx(() => Text(watchVideoController.campaignVideoUrl.value)),
           Container(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: YoutubePlayer(
-                controller: _controller,
+                controller: watchVideoController.youtubePlayerController,
                 aspectRatio: 16 / 9,
               ),
             ),
@@ -55,7 +48,7 @@ class _WatchVideoState extends State<WatchVideo> {
                     height: _mediaQuery.height * 0.5,
                     // Height of the Countdown Widget.
                     width: _mediaQuery.width * 0.5,
-                    duration: 80,
+                    duration: 20,
                     initialDuration: 0,
                     controller: _countDownController,
                     // Ring Color for Countdown Widget.
@@ -111,8 +104,8 @@ class _WatchVideoState extends State<WatchVideo> {
 
                     // This Callback will execute when the Countdown Ends.
                     onComplete: () {
-                      // Here, do whatever you want
-                      print('Countdown Ended');
+                      watchVideoController.getAndPlayRandomCampaign();
+                      _countDownController.restart();
                     },
                   ),
                 ),
