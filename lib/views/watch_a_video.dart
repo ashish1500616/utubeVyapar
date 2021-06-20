@@ -104,7 +104,7 @@ class _WatchVideoState extends State<WatchVideo> {
                     // This Callback will execute when the Countdown Ends.
                     onComplete: () {
                       watchVideoController.getAndPlayRandomCampaign();
-                      watchVideoController.settlePoints();
+                      watchVideoController.settlePoints(100);
                       _countDownController.restart();
                     },
                   ),

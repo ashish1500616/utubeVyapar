@@ -53,5 +53,9 @@ class WatchVideoController extends GetxController {
     return _timerController;
   }
 
-  void settlePoints(value) {}
+  void settlePoints(value) {
+    fetchUserService.increasePoints(value);
+    fetchUserService.reducePoints(value);
+    getUserCurrentPoints();
+  }
 }

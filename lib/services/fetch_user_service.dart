@@ -5,14 +5,14 @@ import 'package:get/get.dart';
 
 class FetchUserService extends GetConnect {
   var campaignVideoURL = "";
-
+  var randomCampaignElement;
   fetchRandomVideo() async {
     // Fetch Response Object From API.
     Response<dynamic> response = await fetchResponseFromRandomApi();
     // Cast the response object into list.
     var data = getListOfDataFromResponseBody(response);
     // Get the random campaign element from the list.
-    var randomCampaignElement = data[new Random().nextInt(data.length)];
+    randomCampaignElement = data[new Random().nextInt(data.length)];
     // Get the video url of the random campaign and set to current global videoURL
     campaignVideoURL = randomCampaignElement["video_url"];
     // Return video url from the function.
@@ -52,5 +52,22 @@ class FetchUserService extends GetConnect {
     var uid = "uuid";
     final response = await get('https://vipa3p.deta.dev/api/users/$uid');
     return response;
+  }
+
+  increasePoints(value) async {
+    // var uid = FirebaseAuth.instance.currentUser!.uid.toString();
+    var uid = "uuid";
+    final response =
+        await get('https://vipa3p.deta.dev/api/users/add/$uid/$value');
+    print(response.body);
+  }
+
+  reducePoints(value) async {
+    //uid of the person whose video is being played.
+    // var uid = randomCampaignElement["uuid"];
+    var uid = "abc";
+    final response =
+        await get('https://vipa3p.deta.dev/api/users/reduce/$uid/$value');
+    print(response.body);
   }
 }
