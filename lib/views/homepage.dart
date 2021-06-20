@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:utubevyappar/controller/home_page_controller.dart';
-import 'package:utubevyappar/services/fetch_user_service.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -14,7 +14,10 @@ class HomePage extends StatelessWidget {
         currentUserName.substring(1).toLowerCase();
     final _mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("UtubeVyapar"),
+        leading: const Icon(Icons.monetization_on_outlined),
+      ),
       body: Column(
         children: [
           Container(

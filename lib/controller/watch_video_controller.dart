@@ -7,6 +7,7 @@ class WatchVideoController extends GetxController {
   CountDownController _timerController = CountDownController();
   FetchUserService fetchUserService = Get.put(FetchUserService());
   var youtubePlayerController;
+  var currentPoint = "0".obs;
 
   @override
   void onInit() {
@@ -24,6 +25,7 @@ class WatchVideoController extends GetxController {
         autoPlay: true,
       ),
     );
+    getUserCurrentPoints();
   }
 
   getAndPlayRandomCampaign() async {
@@ -41,7 +43,15 @@ class WatchVideoController extends GetxController {
     youtubePlayerController.play();
   }
 
+  getUserCurrentPoints() {
+    fetchUserService
+        .fetchCurrentUserPoints()
+        .then((value) => currentPoint.value = value.toString());
+  }
+
   getTimerController() {
     return _timerController;
   }
+
+  void settlePoints(value) {}
 }

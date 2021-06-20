@@ -2,7 +2,6 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:utubevyappar/controller/watch_video_controller.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class WatchVideo extends StatefulWidget {
   @override
@@ -26,7 +25,7 @@ class _WatchVideoState extends State<WatchVideo> {
       body: Column(
         children: [
           // Obx(() => Text(watchVideoController.campaignVideoUrl.value)),
-          Container(
+          /*          Container(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: YoutubePlayer(
@@ -34,7 +33,7 @@ class _WatchVideoState extends State<WatchVideo> {
                 aspectRatio: 16 / 9,
               ),
             ),
-          ),
+          ),*/
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -105,6 +104,7 @@ class _WatchVideoState extends State<WatchVideo> {
                     // This Callback will execute when the Countdown Ends.
                     onComplete: () {
                       watchVideoController.getAndPlayRandomCampaign();
+                      watchVideoController.settlePoints();
                       _countDownController.restart();
                     },
                   ),
@@ -120,7 +120,7 @@ class _WatchVideoState extends State<WatchVideo> {
                   ),
                 ),
               ),
-              Text("240 Points")
+              Obx(() => Text(watchVideoController.currentPoint.value))
             ],
           ),
         ],
