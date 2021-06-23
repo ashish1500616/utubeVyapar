@@ -24,7 +24,7 @@ class CreateCampaignController extends GetxController {
       dataMap["uuid"] = FirebaseAuth.instance.currentUser!.uid.toString();
       if (validate()) {
         dataMap["video_url"] = youtube_video_link_text_controller.text;
-        dataMap["vide_category_id"] = video_category;
+        dataMap["video_category_id"] = video_category!.value;
         postYoutubeVideoLink(dataMap);
       }
     }
