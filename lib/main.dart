@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:utubevyappar/views/homepage.dart';
 import 'package:utubevyappar/views/watch_a_video.dart';
 import 'package:utubevyappar/views/welcome.dart';
 
 main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   await GetStorage.init();
   runApp(App());
 }

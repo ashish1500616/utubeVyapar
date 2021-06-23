@@ -22,7 +22,7 @@ class _WatchVideoState extends State<WatchVideo> {
     // watchVideoController.getRandomCampaignURL();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Colors.deepOrange.shade200,
       ),
       body: Column(
         children: [

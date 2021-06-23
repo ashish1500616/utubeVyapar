@@ -2,18 +2,32 @@ import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class CreateCampaignController extends GetxController {
   TextEditingController youtube_video_link_text_controller =
       TextEditingController();
+  final formKey = GlobalKey<FormBuilderState>();
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
 
   submitVideoLink() {
-    var dataMap = new Map();
-    dataMap["uuid"] = FirebaseAuth.instance.currentUser!.uid.toString();
-    dataMap["video_url"] = youtube_video_link_text_controller.text;
-    postYoutubeVideoLink(dataMap);
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      final video_category = formKey.currentState!.fields["choice_chip"];
+      var dataMap = new Map();
+      dataMap["uuid"] = FirebaseAuth.instance.currentUser!.uid.toString();
+      if (validate()) {
+        dataMap["video_url"] = youtube_video_link_text_controller.text;
+        dataMap["vide_category_id"] = video_category;
+        postYoutubeVideoLink(dataMap);
+      }
+    }
   }
 
   postYoutubeVideoLink(data) async {
@@ -30,12 +44,24 @@ class CreateCampaignController extends GetxController {
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
       Get.snackbar("response.statusCode", "Unable to push video to public pool",
-          backgroundColor: Colors.red, snackPosition: SnackPosition.TOP);
+          backgroundColor: Colors.red.shade100,
+          snackPosition: SnackPosition.TOP);
     }
   }
 
   void abortEditing() {
     Get.back();
     youtube_video_link_text_controller.clear();
+  }
+
+  bool validate() {
+    if (youtube_video_link_text_controller.text.isNotEmpty) {
+      return true;
+    } else {
+      Get.snackbar("Error", "Youtube video link cant be empty.",
+          backgroundColor: Colors.red.shade100,
+          snackPosition: SnackPosition.BOTTOM);
+      return false;
+    }
   }
 }

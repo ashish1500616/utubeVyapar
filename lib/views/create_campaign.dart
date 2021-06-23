@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:utubevyappar/controller/create_campaign_controller.dart';
 
@@ -8,13 +9,10 @@ class CreateCampaign extends StatelessWidget {
     CreateCampaignController createCampaignController =
         Get.put(CreateCampaignController());
     final _mediaQuery = MediaQuery.of(context).size;
-    return Container(
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
       child: Column(
         children: [
-          /* enter address details */
-          /*SizedBox(
-            height: 50,
-          ),*/
           Padding(
             padding: EdgeInsets.only(top: 10),
             child: Row(
@@ -83,11 +81,101 @@ class CreateCampaign extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                child: FormBuilder(
+                  key: createCampaignController.formKey,
+                  child: FormBuilderChoiceChip(
+                    name: 'choice_chip',
+                    decoration: InputDecoration(
+                      labelText: 'Select a video category',
+                    ),
+                    options: [
+                      FormBuilderFieldOption(
+                          value: '1',
+                          child: Text(
+                            'Unboxing Video',
+                            style: TextStyle(
+                              letterSpacing: 1,
+                            ),
+                          )),
+                      FormBuilderFieldOption(
+                          value: '2',
+                          child: Text(
+                            'Educational Video',
+                            style: TextStyle(
+                              letterSpacing: 1,
+                            ),
+                          )),
+                      FormBuilderFieldOption(
+                          value: '3',
+                          child: Text(
+                            'Favorites/Best Of Video',
+                            style: TextStyle(
+                              letterSpacing: 1,
+                            ),
+                          )),
+                      FormBuilderFieldOption(
+                          value: '4',
+                          child: Text(
+                            'Tag or Challenge Video',
+                            style: TextStyle(
+                              letterSpacing: 1,
+                            ),
+                          )),
+                      FormBuilderFieldOption(
+                        value: '5',
+                        child: Text(
+                          'Haul Video',
+                          style: TextStyle(
+                            letterSpacing: 1,
+                          ),
+                        ),
+                      ),
+                      FormBuilderFieldOption(
+                        value: '6',
+                        child: Text(
+                          'Comedy/Skit Video',
+                          style: TextStyle(
+                            letterSpacing: 1,
+                          ),
+                        ),
+                      ),
+                      FormBuilderFieldOption(
+                          value: '7',
+                          child: Text(
+                            'Vlogs',
+                            style: TextStyle(
+                              letterSpacing: 1,
+                            ),
+                          )),
+                      FormBuilderFieldOption(
+                          value: '8',
+                          child: Text(
+                            'How-To Video',
+                            style: TextStyle(
+                              letterSpacing: 1,
+                            ),
+                          )),
+                      FormBuilderFieldOption(
+                          value: '9',
+                          child: Text(
+                            'Product Review Video',
+                            style: TextStyle(
+                              letterSpacing: 1,
+                            ),
+                          )),
+                    ],
+                    validator: FormBuilderValidators.required(context,
+                        errorText: "Please select one of the category"),
+                  ),
+                  onChanged: () {
+                    print("Changed ");
+                  },
+                ),
+              ),
             ],
-          ),
-          SizedBox(
-            height: 5,
           ),
           Container(
             width: _mediaQuery.width * 8,
@@ -98,19 +186,17 @@ class CreateCampaign extends StatelessWidget {
                 child: Text(
                   "Submit Video",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.0,
                   ),
                 ),
-                style: ElevatedButton.styleFrom(primary: Colors.black87),
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.deepOrange.shade200),
               ),
             ),
           ),
-          SizedBox(
-            height: 50,
-          )
         ],
       ),
     );
