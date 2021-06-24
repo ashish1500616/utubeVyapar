@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:utubevyappar/controller/home_page_controller.dart';
 
 class CreateCampaignController extends GetxController {
   TextEditingController youtube_video_link_text_controller =
       TextEditingController();
-  final formKey = GlobalKey<FormBuilderState>();
+  HomePageController homePageController = Get.find();
+  var formKey = GlobalKey<FormBuilderState>();
 
   @override
   void onInit() {
@@ -25,6 +27,7 @@ class CreateCampaignController extends GetxController {
       if (validate()) {
         dataMap["video_url"] = youtube_video_link_text_controller.text;
         dataMap["video_category_id"] = video_category!.value;
+        dataMap["video_category_id"] = video_category.value;
         postYoutubeVideoLink(dataMap);
       }
     }
@@ -36,7 +39,7 @@ class CreateCampaignController extends GetxController {
     if (response.statusCode == 201) {
       Get.snackbar(
           "Success", "Your youtube video link has been pushed to public pool.",
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: Colors.deepOrange.shade200,
           snackPosition: SnackPosition.TOP,
           colorText: Colors.black87);
       // Get.back();

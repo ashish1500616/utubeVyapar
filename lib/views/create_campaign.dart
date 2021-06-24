@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:utubevyappar/controller/create_campaign_controller.dart';
+import 'package:utubevyappar/controller/home_page_controller.dart';
 
 class CreateCampaign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CreateCampaignController createCampaignController =
         Get.put(CreateCampaignController());
+    HomePageController homePageController = Get.find();
     final _mediaQuery = MediaQuery.of(context).size;
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,

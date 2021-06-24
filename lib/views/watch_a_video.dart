@@ -140,7 +140,8 @@ class _WatchVideoState extends State<WatchVideo> {
                     child: Obx(
                       () => (watchVideoController.currentPoint.value == "0" ||
                               watchVideoController.isSettlingPoints.isTrue)
-                          ? SpinKitChasingDots(color: Colors.blue)
+                          ? SpinKitChasingDots(
+                              color: Colors.deepOrange.shade300)
                           : Align(
                               alignment: Alignment.center,
                               child:

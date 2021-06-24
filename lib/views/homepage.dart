@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:utubevyappar/controller/home_page_controller.dart';
 import 'package:utubevyappar/views/create_campaign.dart';
 import 'package:utubevyappar/views/user_information.dart';
@@ -110,22 +109,21 @@ class HomePage extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20),
-            Container(
+/*            Container(
               alignment: Alignment.center,
               child: AdWidget(ad: homePageController.bannerAd),
               width: homePageController.bannerAd.size.width.toDouble(),
               height: homePageController.bannerAd.size.height.toDouble(),
-            ),
+            ),*/
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 InkWell(
                   onTap: () {
-                    Get.bottomSheet(
-                      UserInformation(),
-                      backgroundColor: Colors.white,
-                      isScrollControlled: true,
-                    );
+                    // Get.toNamed("/userInformation");
+                    Get.bottomSheet(UserInformation(),
+                        isScrollControlled: true,
+                        backgroundColor: Colors.white);
                   },
                   child: Container(
                     margin: EdgeInsets.all(5),
