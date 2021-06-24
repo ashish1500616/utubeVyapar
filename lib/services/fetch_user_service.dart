@@ -63,8 +63,7 @@ class FetchUserService extends GetConnect {
 
   fetchResponseFromUsersApi() async {
     // Future function to get the data.
-    // var uid = FirebaseAuth.instance.currentUser!.uid.toString();
-    var uid = "uuid";
+    var uid = FirebaseAuth.instance.currentUser!.uid.toString();
     final response = await get('https://vipa3p.deta.dev/api/users/$uid');
     return response;
   }
