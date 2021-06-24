@@ -2,8 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:utubevyappar/controller/user_information_controller.dart';
 
 class Authentication {
+  UserInformationController userInformationController =
+      Get.put(UserInformationController());
+
   static Future<FirebaseApp> initializeFirebase() async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
     User? user = FirebaseAuth.instance.currentUser;
@@ -34,14 +38,21 @@ class Authentication {
       try {
         final UserCredential userCredential =
             await auth.signInWithCredential(credential);
-
+        if (userCredential.additionalUserInfo!.isNewUser) {
+          //User logging in for the first time
+          // Redirect user to tutorial.
+          // Get.to("/userInformation");
+          // Get.bottomSheet(UserInformation());
+          UserInformationController.setIsNewTrue();
+        }
         user = userCredential.user;
         if (user != null) {
           await assertChecks(user, auth);
           // Store the retrieved data
           print(user.displayName);
           print(user.uid);
-          /*email = user.email;
+          /*
+          email = user.email;
           imageUrl = user.photoURL;
           if (name.contains(" ")) {
             name = name.substring(0, name.indexOf(" "));
@@ -62,7 +73,6 @@ class Authentication {
             "Error", "Error occurred using Google Sign-In. Try again.");
       }
     }
-
     return user;
   }
 

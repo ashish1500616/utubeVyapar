@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -69,19 +70,23 @@ class FetchUserService extends GetConnect {
   }
 
   increasePoints(value) async {
-    // var uid = FirebaseAuth.instance.currentUser!.uid.toString();
-    var uid = "uuid";
+    var uid = FirebaseAuth.instance.currentUser!.uid.toString();
     final response =
         await get('https://vipa3p.deta.dev/api/users/add/$uid/$value');
     print(response.body);
   }
 
   reducePoints(value) async {
-    //uid of the person whose video is being played.
-    // var uid = randomCampaignElement["uuid"];
-    var uid = "abc";
+    var uid = randomCampaignElement["uuid"];
     final response =
         await get('https://vipa3p.deta.dev/api/users/reduce/$uid/$value');
     print(response.body);
   }
+
+  /*getYoutubeChannel() async {
+    var uid = randomCampaignElement["uuid"];
+    final response =
+        await get('https://vipa3p.deta.dev/api/users/channel/$uid');
+    return response;
+  }*/
 }

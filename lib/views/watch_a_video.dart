@@ -26,7 +26,7 @@ class _WatchVideoState extends State<WatchVideo> {
       ),
       body: Column(
         children: [
-          // Obx(() => Text(watchVideoController.campaignVideoUrl.value)),
+          // Obx(() => Text(watchVideoController.youtubeChannelLink.value)),
           Container(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -53,13 +53,13 @@ class _WatchVideoState extends State<WatchVideo> {
                     initialDuration: 0,
                     controller: _countDownController,
                     // Ring Color for Countdown Widget.
-                    ringColor: Colors.blue,
+                    ringColor: Colors.deepOrange.shade200,
 
                     // Ring Gradient for Countdown Widget.
                     ringGradient: null,
 
                     // Filling Color for Countdown Widget.
-                    fillColor: Colors.black87,
+                    fillColor: Colors.deepOrange.shade700,
 
                     // Filling Gradient for Countdown Widget.
                     fillGradient: null,
@@ -128,7 +128,7 @@ class _WatchVideoState extends State<WatchVideo> {
                     margin: EdgeInsets.only(top: 10),
                     child: Text("Coins",
                         style: TextStyle(
-                          color: Colors.black87,
+                          color: Colors.deepOrange.shade600,
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           letterSpacing: 1.0,
@@ -146,7 +146,7 @@ class _WatchVideoState extends State<WatchVideo> {
                               child:
                                   Text(watchVideoController.currentPoint.value,
                                       style: TextStyle(
-                                        color: Colors.blue,
+                                        color: Colors.orange.shade700,
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500,
                                         letterSpacing: 1.0,

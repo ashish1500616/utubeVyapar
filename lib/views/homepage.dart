@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:utubevyappar/controller/home_page_controller.dart';
 import 'package:utubevyappar/views/create_campaign.dart';
+import 'package:utubevyappar/views/user_information.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -105,7 +106,7 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
             SizedBox(height: 20),
@@ -114,6 +115,43 @@ class HomePage extends StatelessWidget {
               child: AdWidget(ad: homePageController.bannerAd),
               width: homePageController.bannerAd.size.width.toDouble(),
               height: homePageController.bannerAd.size.height.toDouble(),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Get.bottomSheet(
+                      UserInformation(),
+                      backgroundColor: Colors.white,
+                      isScrollControlled: true,
+                    );
+                  },
+                  child: Container(
+                    margin: EdgeInsets.all(5),
+                    width: _mediaQuery.width * 0.5,
+                    child: Column(
+                      children: [
+                        Card(
+                          child: Image.asset(
+                            "assets/images/video_campaign.png",
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
+                        const Text(
+                          "Promote My Channel",
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.normal,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             )
           ],
         ),

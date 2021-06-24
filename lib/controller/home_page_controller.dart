@@ -1,14 +1,19 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:utubevyappar/controller/user_information_controller.dart';
 import 'package:utubevyappar/services/ad_mob_helper.dart';
+import 'package:utubevyappar/views/user_information.dart';
 
 class HomePageController extends GetxController {
   late BannerAd bannerAd;
-
+  UserInformationController userInformationController =
+      Get.put(UserInformationController());
   var isBannerAdReady = false.obs;
-
+  var isNewUser = false.obs;
   @override
   void onInit() {
+    userInformationController.createNewUserOnDeta();
     bannerAd = BannerAd(
         adUnitId: "ca-app-pub-3940256099942544/6300978111",
         request: AdRequest(),
