@@ -134,18 +134,21 @@ class HomePage extends StatelessWidget {
                     },
                     child: Container(
                       margin: EdgeInsets.all(5),
-                      width: _mediaQuery.width * 0.4,
+                      height: _mediaQuery.height * 0.3,
+                      width: _mediaQuery.width * 0.3,
                       child: Column(
                         children: [
                           Card(
                             child: Image.asset(
                               "assets/images/youtube.png",
-                              fit: BoxFit.scaleDown,
+                              fit: BoxFit.contain,
+                              height: 100,
+                              width: 200,
                             ),
                           ),
                           const Text(
                             "Promote Your Channel",
-                            textAlign: TextAlign.left,
+                            textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontSize: 15,
                               fontFamily: 'Open Sans',
@@ -164,18 +167,54 @@ class HomePage extends StatelessWidget {
                     },
                     child: Container(
                       margin: EdgeInsets.all(5),
-                      width: _mediaQuery.width * 0.4,
+                      height: _mediaQuery.height * 0.3,
+                      width: _mediaQuery.width * 0.3,
                       child: Column(
                         children: [
                           Card(
                             child: Image.asset(
                               "assets/images/telegram.png",
-                              fit: BoxFit.scaleDown,
+                              fit: BoxFit.contain,
+                              height: 100,
+                              width: 200,
                             ),
                           ),
                           const Text(
                             "Join On Telegram",
-                            textAlign: TextAlign.left,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.normal,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      print("Opening telegram channel.");
+                      launch("https://t.me/joinchat/gbJk-jKQPMxiMzc1",
+                          forceSafariVC: false);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(5),
+                      height: _mediaQuery.height * 0.3,
+                      width: _mediaQuery.width * 0.3,
+                      child: Column(
+                        children: [
+                          Card(
+                            child: Image.asset(
+                              "assets/images/collab.png",
+                              fit: BoxFit.contain,
+                              height: 100,
+                              width: 200,
+                            ),
+                          ),
+                          const Text(
+                            "Collaborators",
+                            textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontSize: 15,
                               fontFamily: 'Open Sans',

@@ -27,16 +27,16 @@ class Welcome extends StatelessWidget {
               height: MediaQuery.of(context).size.height * .45,
             ),
             Text(
-              "Flop videos to top videos",
+              "Helping Youtubers \nTo get more viewers",
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w500,
                   height: 1.5,
                   fontSize: 22,
-                  letterSpacing: 1.3),
+                  letterSpacing: 1),
             ),
             Text(
-              "UTubeVyapar",
+              "UtubeVyapar",
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontWeight: FontWeight.w600,
