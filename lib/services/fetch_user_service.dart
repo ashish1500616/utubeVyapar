@@ -4,11 +4,14 @@ import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
 
 class FetchUserService extends GetConnect {
   var campaignVideoURL = "";
   var randomCampaignElement;
   final videoUrlStorage = GetStorage();
+  var youtubeChannelUrl = "".obs;
+  var randomElementUid = "";
 
   @override
   void onInit() {
@@ -32,6 +35,8 @@ class FetchUserService extends GetConnect {
     randomCampaignElement = data[new Random().nextInt(data.length)];
     // Get the video url of the random campaign and set to current global videoURL
     campaignVideoURL = randomCampaignElement["video_url"];
+    randomElementUid = randomCampaignElement["uuid"];
+    youtubeChannelUrl.value = await getYoutubeChannelUrl(randomElementUid);
     // Return video url from the function.
     return campaignVideoURL;
   }
@@ -76,16 +81,17 @@ class FetchUserService extends GetConnect {
   }
 
   reducePoints(value) async {
-    var uid = randomCampaignElement["uuid"];
+    print(randomElementUid);
+    var uid = randomElementUid;
     final response =
         await get('https://vipa3p.deta.dev/api/users/reduce/$uid/$value');
     print(response.body);
   }
 
-  /*getYoutubeChannel() async {
-    var uid = randomCampaignElement["uuid"];
-    final response =
-        await get('https://vipa3p.deta.dev/api/users/channel/$uid');
-    return response;
-  }*/
+  Future<String> getYoutubeChannelUrl(uid) async {
+    var url = Uri.parse('https://vipa3p.deta.dev/api/users/channel/$uid');
+    var response = await http.get(url);
+    print("Youtube channel of the random user is :" + response.body.toString());
+    return Future<String>.value(response.body);
+  }
 }

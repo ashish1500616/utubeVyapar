@@ -27,13 +27,14 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: 70,
+                height: 80,
                 child: Padding(
                   padding: const EdgeInsets.all(25),
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       'Hello, $currentUserName',
+                      overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.left,
                       style: const TextStyle(
                         fontSize: 22,
@@ -134,7 +135,7 @@ class HomePage extends StatelessWidget {
                         children: [
                           Card(
                             child: Image.asset(
-                              "assets/images/video_campaign.png",
+                              "assets/images/youtube.png",
                               fit: BoxFit.scaleDown,
                             ),
                           ),

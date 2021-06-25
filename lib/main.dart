@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:utubevyappar/views/DelegateToWebView.dart';
 import 'package:utubevyappar/views/homepage.dart';
 import 'package:utubevyappar/views/user_information.dart';
 import 'package:utubevyappar/views/watch_a_video.dart';
@@ -27,6 +28,7 @@ class App extends StatelessWidget {
         GetPage(name: '/home', page: () => HomePage()),
         GetPage(name: '/watchVideo', page: () => WatchVideo()),
         GetPage(name: '/userInformation', page: () => UserInformation()),
+        GetPage(name: '/delegateToWebView', page: () => DelegateToWebView()),
       ],
     );
   }

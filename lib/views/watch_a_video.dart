@@ -26,7 +26,6 @@ class _WatchVideoState extends State<WatchVideo> {
       ),
       body: Column(
         children: [
-          // Obx(() => Text(watchVideoController.youtubeChannelLink.value)),
           Container(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -54,55 +53,40 @@ class _WatchVideoState extends State<WatchVideo> {
                     controller: _countDownController,
                     // Ring Color for Countdown Widget.
                     ringColor: Colors.deepOrange.shade200,
-
                     // Ring Gradient for Countdown Widget.
                     ringGradient: null,
-
                     // Filling Color for Countdown Widget.
                     fillColor: Colors.deepOrange.shade700,
-
                     // Filling Gradient for Countdown Widget.
                     fillGradient: null,
-
                     // Background Color for Countdown Widget.
                     backgroundColor: Colors.white,
-
                     // Background Gradient for Countdown Widget.
                     backgroundGradient: null,
-
                     // Border Thickness of the Countdown Ring.
                     strokeWidth: 20.0,
-
                     // Begin and end contours with a flat edge and no extension.
                     strokeCap: StrokeCap.round,
-
                     // Text Style for Countdown Text.
                     textStyle: TextStyle(
                         fontSize: 33.0,
                         color: Colors.black87,
                         fontWeight: FontWeight.bold),
-
                     // Format for the Countdown Text.
                     textFormat: CountdownTextFormat.S,
-
                     // Handles Countdown Timer (true for Reverse Countdown (max to 0), false for Forward Countdown (0 to max)).
                     isReverse: true,
-
                     // Handles Animation Direction (true for Reverse Animation, false for Forward Animation).
                     isReverseAnimation: false,
-
                     // Handles visibility of the Countdown Text.
                     isTimerTextShown: true,
-
                     // Handles the timer start.
                     autoStart: true,
-
                     // This Callback will execute when the Countdown Starts.
                     onStart: () {
                       // Here, do whatever you want
                       print('Countdown Started');
                     },
-
                     // This Callback will execute when the Countdown Ends.
                     onComplete: () {
                       watchVideoController.getAndPlayRandomCampaign();
@@ -159,6 +143,38 @@ class _WatchVideoState extends State<WatchVideo> {
               ),
             ],
           ),
+          InkWell(
+            onTap: () {
+              watchVideoController.launchInWebViewWithJavaScript();
+              // watchVideoController.delegateOpeningYoutubeChannelLink();
+            },
+            child: Container(
+              width: _mediaQuery.width * 0.5,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Card(
+                      child: Image.asset(
+                        "assets/images/subscribe.png",
+                        fit: BoxFit.scaleDown,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    "Click to subscribe",
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Open Sans',
+                      fontWeight: FontWeight.normal,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
+          /*    : Container()),*/
         ],
       ),
     );
