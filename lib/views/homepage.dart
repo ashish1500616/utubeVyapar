@@ -235,9 +235,33 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
+              Row(children: [
+                Container(
+                  padding: const EdgeInsets.all(16.0),
+                  width: _mediaQuery.width * 1,
+                  child: new Column(
+                    children: <Widget>[
+                      Text(
+                        "About Us",
+                        style: TextStyle(color: Colors.black,fontSize: 30),
+                      ),
+                      SizedBox(height: 30,),
+                      new Text(
+                        "UtubeVyapar platform is dedicated to helping youtubers to get more viewers, with premium and unique features that you can get for free.\n \nStart joining our big network and start getting views in just minutes.",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black26,
+                            letterSpacing: 0.5,
+                            height: 1),
+                      ),
+                    ],
+                  ),
+                )
+              ])
             ],
           ),
         ),
