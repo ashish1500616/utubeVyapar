@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:utubevyappar/controller/home_page_controller.dart';
 import 'package:utubevyappar/views/create_campaign.dart';
 import 'package:utubevyappar/views/user_information.dart';
@@ -46,6 +48,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
                     onTap: () => {
@@ -69,7 +72,7 @@ class HomePage extends StatelessWidget {
                             "Watch Videos",
                             textAlign: TextAlign.left,
                             style: const TextStyle(
-                              fontSize: 20,
+                              fontSize: 15,
                               fontFamily: 'Open Sans',
                               fontWeight: FontWeight.normal,
                             ),
@@ -100,7 +103,7 @@ class HomePage extends StatelessWidget {
                             "Create Campaign",
                             textAlign: TextAlign.left,
                             style: const TextStyle(
-                              fontSize: 20,
+                              fontSize: 15,
                               fontFamily: 'Open Sans',
                               fontWeight: FontWeight.normal,
                             ),
@@ -112,14 +115,15 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 20),
-/*            Container(
+              Container(
                 alignment: Alignment.center,
                 child: AdWidget(ad: homePageController.bannerAd),
                 width: homePageController.bannerAd.size.width.toDouble(),
                 height: homePageController.bannerAd.size.height.toDouble(),
-              ),*/
+              ),
+              SizedBox(height: 20),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
                     onTap: () {
@@ -130,7 +134,7 @@ class HomePage extends StatelessWidget {
                     },
                     child: Container(
                       margin: EdgeInsets.all(5),
-                      width: _mediaQuery.width * 0.5,
+                      width: _mediaQuery.width * 0.4,
                       child: Column(
                         children: [
                           Card(
@@ -140,10 +144,10 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           const Text(
-                            "Promote My Channel",
+                            "Promote Your Channel",
                             textAlign: TextAlign.left,
                             style: const TextStyle(
-                              fontSize: 20,
+                              fontSize: 15,
                               fontFamily: 'Open Sans',
                               fontWeight: FontWeight.normal,
                             ),
@@ -152,6 +156,36 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  InkWell(
+                    onTap: () {
+                      print("Opening telegram channel.");
+                      launch("https://t.me/joinchat/gbJk-jKQPMxiMzc1",
+                          forceSafariVC: false);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(5),
+                      width: _mediaQuery.width * 0.4,
+                      child: Column(
+                        children: [
+                          Card(
+                            child: Image.asset(
+                              "assets/images/telegram.png",
+                              fit: BoxFit.scaleDown,
+                            ),
+                          ),
+                          const Text(
+                            "Join On Telegram",
+                            textAlign: TextAlign.left,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.normal,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               )
             ],
