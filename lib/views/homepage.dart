@@ -64,7 +64,9 @@ class HomePage extends StatelessWidget {
                             child: Card(
                               child: Image.asset(
                                 "assets/images/watch_video.png",
-                                fit: BoxFit.scaleDown,
+                                fit: BoxFit.contain,
+                                height: 150,
+                                width: 200,
                               ),
                             ),
                           ),
@@ -96,7 +98,9 @@ class HomePage extends StatelessWidget {
                           Card(
                             child: Image.asset(
                               "assets/images/video_campaign.png",
-                              fit: BoxFit.scaleDown,
+                              fit: BoxFit.contain,
+                              height: 150,
+                              width: 200,
                             ),
                           ),
                           const Text(
@@ -220,13 +224,20 @@ class HomePage extends StatelessWidget {
                               fontFamily: 'Open Sans',
                               fontWeight: FontWeight.normal,
                             ),
-                          )
+                          ),
+                          Text(
+                            "Coming Soon.",
+                            style: const TextStyle(
+                              fontSize: 8,
+                              color: Colors.deepOrange,
+                            ),
+                          ),
                         ],
                       ),
                     ),
                   )
                 ],
-              )
+              ),
             ],
           ),
         ),
