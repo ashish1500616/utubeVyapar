@@ -51,9 +51,9 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
-                    onTap: () => {
-                      print("Tapped"),
-                      Get.toNamed('/watchVideo'),
+                    onTap: () async => {
+                      /*(homePageController.isInterstitialAdReady.isTrue)*/
+                      Get.toNamed("/watchVideo"),
                     },
                     child: Container(
                       width: _mediaQuery.width * 0.5,
@@ -121,9 +121,9 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 20),
               Container(
                 alignment: Alignment.center,
-                child: AdWidget(ad: homePageController.bannerAd),
-                width: homePageController.bannerAd.size.width.toDouble(),
-                height: homePageController.bannerAd.size.height.toDouble(),
+                child: AdWidget(ad: homePageController.bannerAdFirst),
+                width: homePageController.bannerAdFirst.size.width.toDouble(),
+                height: homePageController.bannerAdFirst.size.height.toDouble(),
               ),
               SizedBox(height: 20),
               Row(
@@ -238,6 +238,13 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
+              Container(
+                alignment: Alignment.center,
+                child: AdWidget(ad: homePageController.bannerAdSecond),
+                width: homePageController.bannerAdSecond.size.width.toDouble(),
+                height:
+                    homePageController.bannerAdSecond.size.height.toDouble(),
+              ),
               Row(children: [
                 Container(
                   padding: const EdgeInsets.all(16.0),
@@ -246,9 +253,11 @@ class HomePage extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         "About Us",
-                        style: TextStyle(color: Colors.black,fontSize: 30),
+                        style: TextStyle(color: Colors.black, fontSize: 30),
                       ),
-                      SizedBox(height: 30,),
+                      SizedBox(
+                        height: 30,
+                      ),
                       new Text(
                         "UtubeVyapar platform is dedicated to helping youtubers to get more viewers, with premium and unique features that you can get for free.\n \nStart joining our big network and start getting views in just minutes.",
                         textAlign: TextAlign.left,
@@ -261,7 +270,7 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 )
-              ])
+              ]),
             ],
           ),
         ),

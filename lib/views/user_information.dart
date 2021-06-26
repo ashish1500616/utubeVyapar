@@ -49,7 +49,7 @@ class UserInformation extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.fromLTRB(20, 5, 5, 5),
               child: Text(
-                "Please be careful, You won\'t be able to change your channel later.",
+                "Please provide us channel link so that we can ask our viewers to like and subscribe on your behalf.",
                 style: TextStyle(
                     color: Colors.black87, fontSize: 10, letterSpacing: 1),
               ),
@@ -91,7 +91,7 @@ class UserInformation extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.fromLTRB(20, 5, 5, 5),
               child: Text(
-                "Please provide us channel link so that we can ask our viewers to like and subscribe on your behalf.",
+                "Thanks for using UtubeVyapar..\n",
                 style: TextStyle(
                     color: Colors.black87, fontSize: 10, letterSpacing: 1),
               ),
