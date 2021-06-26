@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
+import 'package:utubevyappar/controller/create_campaign_controller.dart';
 import 'package:utubevyappar/controller/user_information_controller.dart';
 
 class UserInformation extends StatelessWidget {
@@ -68,7 +70,8 @@ class UserInformation extends StatelessWidget {
                   Icons.label_important,
                   color: Colors.orange,
                 ),
-                hintStyle: const TextStyle(fontSize: 16.0, color: Colors.black87),
+                hintStyle:
+                    const TextStyle(fontSize: 16.0, color: Colors.black87),
                 hintText: 'Paste your channel link here',
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -86,12 +89,105 @@ class UserInformation extends StatelessWidget {
               ),
             ),
           ),
+          Container(
+            padding: EdgeInsets.all(10),
+            child: FormBuilder(
+              key: userInformationController.formKey,
+              child: FormBuilderChoiceChip(
+                name: 'channel_category_choice_chip',
+                decoration: InputDecoration(
+                  labelText: 'Select a channel category',
+                ),
+                options: [
+                  FormBuilderFieldOption(
+                      value: '1',
+                      child: const Text(
+                        'Unboxing Video',
+                        style: TextStyle(
+                          letterSpacing: 1,
+                        ),
+                      )),
+                  FormBuilderFieldOption(
+                      value: '2',
+                      child: const Text(
+                        'Educational Video',
+                        style: TextStyle(
+                          letterSpacing: 1,
+                        ),
+                      )),
+                  FormBuilderFieldOption(
+                      value: '3',
+                      child: const Text(
+                        'Favorites/Best Of Video',
+                        style: TextStyle(
+                          letterSpacing: 1,
+                        ),
+                      )),
+                  FormBuilderFieldOption(
+                      value: '4',
+                      child: const Text(
+                        'Tag or Challenge Video',
+                        style: TextStyle(
+                          letterSpacing: 1,
+                        ),
+                      )),
+                  FormBuilderFieldOption(
+                    value: '5',
+                    child: const Text(
+                      'Haul Video',
+                      style: TextStyle(
+                        letterSpacing: 1,
+                      ),
+                    ),
+                  ),
+                  FormBuilderFieldOption(
+                    value: '6',
+                    child: const Text(
+                      'Comedy/Skit Video',
+                      style: TextStyle(
+                        letterSpacing: 1,
+                      ),
+                    ),
+                  ),
+                  FormBuilderFieldOption(
+                      value: '7',
+                      child: const Text(
+                        'Vlogs',
+                        style: TextStyle(
+                          letterSpacing: 1,
+                        ),
+                      )),
+                  FormBuilderFieldOption(
+                      value: '8',
+                      child: const Text(
+                        'How-To Video',
+                        style: TextStyle(
+                          letterSpacing: 1,
+                        ),
+                      )),
+                  FormBuilderFieldOption(
+                      value: '9',
+                      child: const Text(
+                        'Product Review Video',
+                        style: TextStyle(
+                          letterSpacing: 1,
+                        ),
+                      )),
+                ],
+                validator: FormBuilderValidators.required(context,
+                    errorText: "Please select one of the category"),
+              ),
+              onChanged: () {
+                print("Changed ");
+              },
+            ),
+          ),
           Align(
             alignment: Alignment.centerLeft,
             child: const Padding(
               padding: EdgeInsets.fromLTRB(20, 5, 5, 5),
               child: const Text(
-                "Thanks for using UtubeVyapar..\n",
+                "Thanks for using UtubeVyapar.\n",
                 style: TextStyle(
                     color: Colors.black87, fontSize: 10, letterSpacing: 1),
               ),
@@ -103,7 +199,7 @@ class UserInformation extends StatelessWidget {
           Container(
             width: _mediaQuery.width * 8,
             child: Padding(
-              padding: const  EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ElevatedButton(
                 onPressed: () =>
                     {userInformationController.addYoutubeChannelToUser()},
