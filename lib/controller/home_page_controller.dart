@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:new_version/new_version.dart';
 import 'package:utubevyappar/controller/user_information_controller.dart';
 
 class HomePageController extends GetxController {
@@ -16,6 +17,7 @@ class HomePageController extends GetxController {
   void onInit() {
     super.onInit();
     userInformationController.createNewUserOnDeta();
+    _checkVersion();
     bannerAdFirst = BannerAd(
         adUnitId: "ca-app-pub-3940256099942544/6300978111",
         request: AdRequest(),
@@ -66,5 +68,10 @@ class HomePageController extends GetxController {
         ));
 
     bannerAdSecond.load();
+  }
+
+  void _checkVersion() {
+    final newVersion = NewVersion(androidId: "com.example.utubevyappar");
+    newVersion.showAlertIfNecessary(context: Get.context!);
   }
 }
