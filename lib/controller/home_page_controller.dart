@@ -11,7 +11,6 @@ class HomePageController extends GetxController {
       Get.put(UserInformationController());
   var isBannerAdReady = false.obs;
   var isNewUser = false.obs;
-  var isInterstitialAdReady = false.obs;
 
   @override
   void onInit() {
@@ -19,9 +18,9 @@ class HomePageController extends GetxController {
     userInformationController.createNewUserOnDeta();
     _checkVersion();
     bannerAdFirst = BannerAd(
-        adUnitId: "ca-app-pub-3940256099942544/6300978111",
+        adUnitId: "ca-app-pub-5225835586845251/9410986702",
         request: AdRequest(),
-        size: AdSize.banner,
+        size: AdSize.largeBanner,
         listener: BannerAdListener(
           // Called when an ad is successfully received.
           onAdLoaded: (Ad ad) => () {
@@ -44,9 +43,9 @@ class HomePageController extends GetxController {
 
     bannerAdFirst.load();
     bannerAdSecond = BannerAd(
-        adUnitId: "ca-app-pub-3940256099942544/6300978111",
+        adUnitId: "ca-app-pub-5225835586845251/9259777616",
         request: AdRequest(),
-        size: AdSize.banner,
+        size: AdSize.largeBanner,
         listener: BannerAdListener(
           // Called when an ad is successfully received.
           onAdLoaded: (Ad ad) => () {
@@ -71,7 +70,7 @@ class HomePageController extends GetxController {
   }
 
   void _checkVersion() {
-    final newVersion = NewVersion(androidId: "com.example.utubevyappar");
+    final newVersion = NewVersion(androidId: "com.wowcodes.utubeVyapar");
     newVersion.showAlertIfNecessary(context: Get.context!);
   }
 }

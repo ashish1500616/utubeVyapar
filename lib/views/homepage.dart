@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:utubevyappar/controller/AdsController.dart';
 import 'package:utubevyappar/controller/home_page_controller.dart';
 import 'package:utubevyappar/views/create_campaign.dart';
-import 'package:utubevyappar/views/user_information.dart';
 import 'package:utubevyappar/views/widgets/promote_channel.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomePageController homePageController = Get.put(HomePageController());
+    AdsController adsController = Get.put(AdsController());
     String currentUserName =
         FirebaseAuth.instance.currentUser!.displayName.toString();
     currentUserName = currentUserName[0].toUpperCase() +
@@ -126,7 +127,6 @@ class HomePage extends StatelessWidget {
                 width: homePageController.bannerAdFirst.size.width.toDouble(),
                 height: homePageController.bannerAdFirst.size.height.toDouble(),
               ),
-              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

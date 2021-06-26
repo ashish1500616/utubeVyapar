@@ -2,6 +2,7 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:utubevyappar/controller/AdsController.dart';
 import 'package:utubevyappar/controller/watch_video_controller.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -19,7 +20,7 @@ class _WatchVideoState extends State<WatchVideo> {
         Get.put(WatchVideoController());
     CountDownController _countDownController =
         watchVideoController.getTimerController();
-    AdsController adsController = Get.put(AdsController());
+    AdsController adsController = Get.find();
     // Calling On Start fix this;
     // watchVideoController.getRandomCampaignURL();
     return Scaffold(
@@ -149,6 +150,14 @@ class _WatchVideoState extends State<WatchVideo> {
                 ),
               ],
             ),
+            SizedBox(height: 20),
+            Container(
+              alignment: Alignment.center,
+              child: AdWidget(ad: adsController.bannerAdThird),
+              width: adsController.bannerAdThird.size.width.toDouble(),
+              height: adsController.bannerAdThird.size.height.toDouble(),
+            ),
+            SizedBox(height: 20),
             Obx(
               () => (watchVideoController.youtubeChannel.value != "")
                   ? InkWell(

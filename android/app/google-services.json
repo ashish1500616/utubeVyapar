@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "258088693653",
-    "project_id": "utubevyapar",
-    "storage_bucket": "utubevyapar.appspot.com"
+    "project_number": "1051871550933",
+    "project_id": "utubevyapar-71181",
+    "storage_bucket": "utubevyapar-71181.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:258088693653:android:2dc8e9866dda79a02ad09c",
+        "mobilesdk_app_id": "1:1051871550933:android:ff219ee50170529a42715c",
         "android_client_info": {
-          "package_name": "com.example.utubevyappar"
+          "package_name": "com.wowcodes.utubeVyapar"
         }
       },
       "oauth_client": [
         {
-          "client_id": "258088693653-m6h4a2ckioe8igtpp1qfoqb718sadmqd.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.utubevyappar",
-            "certificate_hash": "413dd4e3a37fe929d47fed2e456517f15bf88728"
-          }
-        },
-        {
-          "client_id": "258088693653-t8a8sqani25p5p2bjufqrv5qk8hcvmh2.apps.googleusercontent.com",
+          "client_id": "1051871550933-hu7aqv4dlubte0j10n9g07ls0609fdau.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAaYSlFHCOougOaEGtKZW7yzbScOtC_Pjo"
+          "current_key": "AIzaSyDG5X58ulFhs6FCdEWLcVp9_EioacxaoEs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "258088693653-t8a8sqani25p5p2bjufqrv5qk8hcvmh2.apps.googleusercontent.com",
+              "client_id": "1051871550933-hu7aqv4dlubte0j10n9g07ls0609fdau.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

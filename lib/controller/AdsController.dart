@@ -3,15 +3,52 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdsController extends GetxController {
   InterstitialAd? myInterstitial;
+  late BannerAd bannerAdThird;
+  var isBannerAdThirdReady = false.obs;
+  RewardedAd? _rewardedAd;
 
   @override
   void onInit() {
     super.onInit();
+    createAndLoadThirdBannerAd();
+  }
+
+  createAndLoadThirdBannerAd() {
+    bannerAdThird = BannerAd(
+        adUnitId: "ca-app-pub-5225835586845251/2552814756",
+        request: AdRequest(),
+        size: AdSize.largeBanner,
+        listener: BannerAdListener(
+          // Called when an ad is successfully received.
+          onAdLoaded: (Ad ad) => () {
+            this.isBannerAdThirdReady.value = true;
+            print("Banner Third Is Ready");
+            print('Ad loaded.');
+          },
+          // Called when an ad request failed.
+          onAdFailedToLoad: (Ad ad, LoadAdError error) {
+            // Dispose the ad here to free resources.
+            ad.dispose();
+            print('Ad failed to load: $error');
+          },
+          // Called when an ad opens an overlay that covers the screen.
+          onAdOpened: (Ad ad) => print('Ad opened.'),
+          // Called when an ad removes an overlay that covers the screen.
+          onAdClosed: (Ad ad) => Get.toNamed("/watchVideo"),
+          // Called when an impression occurs on the ad.
+          onAdImpression: (Ad ad) => print('Ad impression.'),
+        ));
+    bannerAdThird.load();
+  }
+
+  @override
+  void dispose() {
+    bannerAdThird.dispose();
   }
 
   createInterstitialAd() {
     InterstitialAd.load(
-      adUnitId: 'ca-app-pub-3940256099942544/1033173712',
+      adUnitId: 'ca-app-pub-5225835586845251/8926651414',
       request: AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         // if ad fails to load
@@ -55,32 +92,36 @@ class AdsController extends GetxController {
 
     myInterstitial!.show();
   }
+
 /*
-  loadInterstitalAds() {
-    InterstitialAd.load(
-        adUnitId: 'ca-app-pub-3940256099942544/1033173712',
-        request: AdRequest(),
-        adLoadCallback: InterstitialAdLoadCallback(
-          onAdLoaded: (InterstitialAd ad) {
-            // Keep a reference to the ad so you can show it later.
-            this.interstitialAd = ad;
-          },
-          onAdFailedToLoad: (LoadAdError error) {
-            print('InterstitialAd failed to load: $error');
-          },
-        ));
-    interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
-      onAdShowedFullScreenContent: (InterstitialAd ad) =>
-          print('$ad onAdShowedFullScreenContent.'),
-      onAdDismissedFullScreenContent: (InterstitialAd ad) {
-        print('$ad onAdDismissedFullScreenContent.');
-        ad.dispose();
-      },
-      onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
-        print('$ad onAdFailedToShowFullScreenContent: $error');
-        ad.dispose();
-      },
-      onAdImpression: (InterstitialAd ad) => print('$ad impression occurred.'),
+  createRewardedAds() {
+    RewardedAd.load(
+      adUnitId: ,
+      request: AdRequest(),
+      rewardedAdLoadCallback: RewardedAdLoadCallback(
+        onAdLoaded: (ad) {
+          this._rewardedAd = ad;
+
+          ad.fullScreenContentCallback = FullScreenContentCallback(
+            onAdDismissedFullScreenContent: (ad) {
+              setState(() {
+                _isRewardedAdReady = false;
+              });
+              _loadRewardedAd();
+            },
+          );
+
+          setState(() {
+            _isRewardedAdReady = true;
+          });
+        },
+        onAdFailedToLoad: (err) {
+          print('Failed to load a rewarded ad: ${err.message}');
+          setState(() {
+            _isRewardedAdReady = false;
+          });
+        },
+      ),
     );
   }
 */
