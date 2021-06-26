@@ -102,7 +102,7 @@ class UserInformation extends StatelessWidget {
                   FormBuilderFieldOption(
                       value: '1',
                       child: const Text(
-                        'Unboxing Video',
+                        'Unboxing',
                         style: TextStyle(
                           letterSpacing: 1,
                         ),
@@ -110,7 +110,7 @@ class UserInformation extends StatelessWidget {
                   FormBuilderFieldOption(
                       value: '2',
                       child: const Text(
-                        'Educational Video',
+                        'Educational',
                         style: TextStyle(
                           letterSpacing: 1,
                         ),
@@ -118,7 +118,7 @@ class UserInformation extends StatelessWidget {
                   FormBuilderFieldOption(
                       value: '3',
                       child: const Text(
-                        'Favorites/Best Of Video',
+                        'Favorites/Best Of',
                         style: TextStyle(
                           letterSpacing: 1,
                         ),
@@ -126,7 +126,7 @@ class UserInformation extends StatelessWidget {
                   FormBuilderFieldOption(
                       value: '4',
                       child: const Text(
-                        'Tag or Challenge Video',
+                        'Tag or Challenge',
                         style: TextStyle(
                           letterSpacing: 1,
                         ),
@@ -134,7 +134,7 @@ class UserInformation extends StatelessWidget {
                   FormBuilderFieldOption(
                     value: '5',
                     child: const Text(
-                      'Haul Video',
+                      'Haul',
                       style: TextStyle(
                         letterSpacing: 1,
                       ),
@@ -143,7 +143,7 @@ class UserInformation extends StatelessWidget {
                   FormBuilderFieldOption(
                     value: '6',
                     child: const Text(
-                      'Comedy/Skit Video',
+                      'Comedy/Skit',
                       style: TextStyle(
                         letterSpacing: 1,
                       ),
@@ -160,7 +160,7 @@ class UserInformation extends StatelessWidget {
                   FormBuilderFieldOption(
                       value: '8',
                       child: const Text(
-                        'How-To Video',
+                        'How-To',
                         style: TextStyle(
                           letterSpacing: 1,
                         ),
@@ -168,11 +168,19 @@ class UserInformation extends StatelessWidget {
                   FormBuilderFieldOption(
                       value: '9',
                       child: const Text(
-                        'Product Review Video',
+                        'Product Review',
                         style: TextStyle(
                           letterSpacing: 1,
                         ),
                       )),
+                  FormBuilderFieldOption(
+                      value: '10',
+                      child: const Text(
+                        'Gaming',
+                        style: TextStyle(
+                          letterSpacing: 1,
+                        ),
+                      ))
                 ],
                 validator: FormBuilderValidators.required(context,
                     errorText: "Please select one of the category"),

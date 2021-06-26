@@ -2,6 +2,7 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:utubevyappar/controller/AdsController.dart';
 import 'package:utubevyappar/controller/watch_video_controller.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -18,6 +19,7 @@ class _WatchVideoState extends State<WatchVideo> {
         Get.put(WatchVideoController());
     CountDownController _countDownController =
         watchVideoController.getTimerController();
+    AdsController adsController = Get.put(AdsController());
     // Calling On Start fix this;
     // watchVideoController.getRandomCampaignURL();
     return Scaffold(
@@ -88,12 +90,14 @@ class _WatchVideoState extends State<WatchVideo> {
                       onStart: () {
                         // Here, do whatever you want
                         print('Countdown Started');
+                        adsController.createInterstitialAd();
                       },
                       // This Callback will execute when the Countdown Ends.
                       onComplete: () {
                         watchVideoController.getAndPlayRandomCampaign();
                         // Pass Value instead of hard coded value
                         watchVideoController.settlePoints(100);
+                        adsController.showInterstitialAd();
                       },
                     ),
                   ),
@@ -179,6 +183,20 @@ class _WatchVideoState extends State<WatchVideo> {
                       ),
                     )
                   : Container(),
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  Text(
+                    "Please add your channel if not added yet to get subscribers from UtubeVyapar network.",
+                    style: TextStyle(
+                        color: Colors.blue.shade300,
+                        fontSize: 12,
+                        letterSpacing: 0.5),
+                  ),
+                ],
+              ),
             )
             /*    : Container()),*/
           ],

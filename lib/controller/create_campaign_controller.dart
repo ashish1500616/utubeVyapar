@@ -28,7 +28,7 @@ class CreateCampaignController extends GetxController {
         dataMap["video_url"] = youtube_video_link_text_controller.text;
         dataMap["video_category_id"] = video_category!.value;
         postYoutubeVideoLink(dataMap);
-        Get.to("/home");
+        Get.back();
       }
     }
   }

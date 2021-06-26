@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:utubevyappar/controller/home_page_controller.dart';
 import 'package:utubevyappar/views/create_campaign.dart';
 import 'package:utubevyappar/views/user_information.dart';
+import 'package:utubevyappar/views/widgets/promote_channel.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -129,40 +130,7 @@ class HomePage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  InkWell(
-                    onTap: () {
-                      // Get.toNamed("/userInformation");
-                      Get.bottomSheet(UserInformation(),
-                          isScrollControlled: true,
-                          backgroundColor: Colors.white);
-                    },
-                    child: Container(
-                      margin: EdgeInsets.all(5),
-                      height: _mediaQuery.height * 0.3,
-                      width: _mediaQuery.width * 0.3,
-                      child: Column(
-                        children: [
-                          Card(
-                            child: Image.asset(
-                              "assets/images/youtube.png",
-                              fit: BoxFit.contain,
-                              height: 100,
-                              width: 200,
-                            ),
-                          ),
-                          const Text(
-                            "Promote Your Channel",
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontFamily: 'Open Sans',
-                              fontWeight: FontWeight.normal,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                  PromoteChannel(),
                   InkWell(
                     onTap: () {
                       print("Opening telegram channel.");
