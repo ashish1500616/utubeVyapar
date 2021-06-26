@@ -3,8 +3,8 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
     <application
-            android:label="utubevyappar"
-            android:icon="@mipmap/ic_launcher"
+            android:label="Utube Vyappar"
+            android:icon="@mipmap/launcher_icon"
             android:usesCleartextTraffic="true">
         <activity
                 android:name=".MainActivity"

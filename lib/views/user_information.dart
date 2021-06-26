@@ -19,7 +19,7 @@ class UserInformation extends StatelessWidget {
                   width: _mediaQuery.width * 0.8,
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(
+                    child: const Text(
                       "User Information *",
                       style: TextStyle(
                         color: Colors.black87,
@@ -48,7 +48,7 @@ class UserInformation extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Padding(
               padding: EdgeInsets.fromLTRB(20, 5, 5, 5),
-              child: Text(
+              child: const Text(
                 "Please provide us channel link so that we can ask our viewers to like and subscribe on your behalf.",
                 style: TextStyle(
                     color: Colors.black87, fontSize: 10, letterSpacing: 1),
@@ -62,13 +62,13 @@ class UserInformation extends StatelessWidget {
                 print(value);
               },
               controller: userInformationController.youtube_channel_link,
-              style: TextStyle(color: Colors.black87),
+              style: const TextStyle(color: Colors.black87),
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.label_important,
                   color: Colors.orange,
                 ),
-                hintStyle: TextStyle(fontSize: 16.0, color: Colors.black87),
+                hintStyle: const TextStyle(fontSize: 16.0, color: Colors.black87),
                 hintText: 'Paste your channel link here',
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -88,9 +88,9 @@ class UserInformation extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.centerLeft,
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsets.fromLTRB(20, 5, 5, 5),
-              child: Text(
+              child: const Text(
                 "Thanks for using UtubeVyapar..\n",
                 style: TextStyle(
                     color: Colors.black87, fontSize: 10, letterSpacing: 1),
@@ -103,7 +103,7 @@ class UserInformation extends StatelessWidget {
           Container(
             width: _mediaQuery.width * 8,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const  EdgeInsets.symmetric(horizontal: 20),
               child: ElevatedButton(
                 onPressed: () =>
                     {userInformationController.addYoutubeChannelToUser()},

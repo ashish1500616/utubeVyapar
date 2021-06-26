@@ -23,7 +23,7 @@ class CreateCampaign extends StatelessWidget {
                   width: _mediaQuery.width * 0.8,
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(
+                    child: const Text(
                       "Youtube Video Link *",
                       style: TextStyle(
                         color: Colors.black87,
@@ -37,7 +37,6 @@ class CreateCampaign extends StatelessWidget {
                   width: _mediaQuery.width * 0.2,
                   child: IconButton(
                     onPressed: () {
-                      // addressController.abortEditing();
                       createCampaignController.abortEditing();
                     },
                     icon: const Icon(
@@ -66,7 +65,7 @@ class CreateCampaign extends StatelessWidget {
                       Icons.label_important,
                       color: Colors.orange,
                     ),
-                    hintStyle: TextStyle(fontSize: 16.0, color: Colors.black87),
+                    hintStyle: const TextStyle(fontSize: 16.0, color: Colors.black87),
                     hintText: 'Paste your video link here',
                     contentPadding:
                         EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -96,7 +95,7 @@ class CreateCampaign extends StatelessWidget {
                     options: [
                       FormBuilderFieldOption(
                           value: '1',
-                          child: Text(
+                          child: const Text(
                             'Unboxing Video',
                             style: TextStyle(
                               letterSpacing: 1,
@@ -104,7 +103,7 @@ class CreateCampaign extends StatelessWidget {
                           )),
                       FormBuilderFieldOption(
                           value: '2',
-                          child: Text(
+                          child: const Text(
                             'Educational Video',
                             style: TextStyle(
                               letterSpacing: 1,
@@ -112,7 +111,7 @@ class CreateCampaign extends StatelessWidget {
                           )),
                       FormBuilderFieldOption(
                           value: '3',
-                          child: Text(
+                          child: const Text(
                             'Favorites/Best Of Video',
                             style: TextStyle(
                               letterSpacing: 1,
@@ -120,7 +119,7 @@ class CreateCampaign extends StatelessWidget {
                           )),
                       FormBuilderFieldOption(
                           value: '4',
-                          child: Text(
+                          child: const Text(
                             'Tag or Challenge Video',
                             style: TextStyle(
                               letterSpacing: 1,
@@ -128,7 +127,7 @@ class CreateCampaign extends StatelessWidget {
                           )),
                       FormBuilderFieldOption(
                         value: '5',
-                        child: Text(
+                        child: const Text(
                           'Haul Video',
                           style: TextStyle(
                             letterSpacing: 1,
@@ -137,7 +136,7 @@ class CreateCampaign extends StatelessWidget {
                       ),
                       FormBuilderFieldOption(
                         value: '6',
-                        child: Text(
+                        child: const Text(
                           'Comedy/Skit Video',
                           style: TextStyle(
                             letterSpacing: 1,
@@ -146,7 +145,7 @@ class CreateCampaign extends StatelessWidget {
                       ),
                       FormBuilderFieldOption(
                           value: '7',
-                          child: Text(
+                          child: const Text(
                             'Vlogs',
                             style: TextStyle(
                               letterSpacing: 1,
@@ -154,7 +153,7 @@ class CreateCampaign extends StatelessWidget {
                           )),
                       FormBuilderFieldOption(
                           value: '8',
-                          child: Text(
+                          child: const Text(
                             'How-To Video',
                             style: TextStyle(
                               letterSpacing: 1,
@@ -162,7 +161,7 @@ class CreateCampaign extends StatelessWidget {
                           )),
                       FormBuilderFieldOption(
                           value: '9',
-                          child: Text(
+                          child: const Text(
                             'Product Review Video',
                             style: TextStyle(
                               letterSpacing: 1,
@@ -185,7 +184,7 @@ class CreateCampaign extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: ElevatedButton(
                 onPressed: () => {createCampaignController.submitVideoLink()},
-                child: Text(
+                child: const Text(
                   "Submit Video",
                   style: TextStyle(
                     color: Colors.black,
