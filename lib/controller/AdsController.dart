@@ -8,11 +8,23 @@ class AdsController extends GetxController {
   late BannerAd bannerAdThird;
   late BannerAd bannerAdFourth;
   late BannerAd bannerAdFifth;
+
+  // home page unit 1
   static const BANNER_UNIT_1 = "ca-app-pub-5225835586845251/9410986702";
+
+  // home page unit 2
   static const BANNER_UNIT_2 = "ca-app-pub-5225835586845251/9259777616";
+
+  // watch page unit
   static const BANNER_UNIT_3 = "ca-app-pub-5225835586845251/2552814756";
+
+  // promote video unit
   static const BANNER_UNIT_4 = "ca-app-pub-5225835586845251/8199360278";
+
+  // promote youtube channel unit
   static const BANNER_UNIT_5 = "ca-app-pub-5225835586845251/3049307078";
+
+  // interstitial unit
   static const INTERSTITIAL_UNIT_1 = "ca-app-pub-5225835586845251/8926651414";
 
   @override
@@ -21,6 +33,8 @@ class AdsController extends GetxController {
     createAndLoadFirstBannerAd();
     createAndLoadSecondBannerAd();
     createAndLoadThirdBannerAd();
+    createAndLoadFourthBannerAd();
+    createAndLoadFifthBannerAd();
   }
 
   void createAndLoadFirstBannerAd() {
@@ -132,6 +146,10 @@ class AdsController extends GetxController {
   @override
   void dispose() {
     bannerAdThird.dispose();
+    bannerAdSecond.dispose();
+    bannerAdThird.dispose();
+    bannerAdFourth.dispose();
+    bannerAdFifth.dispose();
   }
 
   createInterstitialAd() {
@@ -159,7 +177,6 @@ class AdsController extends GetxController {
         ad.dispose(); // dispose ad
       },
     );
-
     myInterstitial!.show();
   }
 }
