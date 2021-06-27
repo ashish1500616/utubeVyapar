@@ -21,7 +21,7 @@ class WatchVideoController extends GetxController {
     youtubePlayerController = YoutubePlayerController(
       // TODO:  Change hard coded initial video to constant
       initialVideoId:
-          YoutubePlayer.convertUrlToId("https://youtu.be/cpP-fCo8Dn4")
+          YoutubePlayer.convertUrlToId("https://youtu.be/knmIyz9A5Lw")
               .toString(),
       flags: YoutubePlayerFlags(
         enableCaption: false,
