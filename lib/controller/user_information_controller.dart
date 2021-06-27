@@ -52,12 +52,16 @@ class UserInformationController extends GetxController {
         print(response);
         if (response.statusCode == 200) {
           Get.back();
+          Get.snackbar("Success",
+              "Youtube channel link for your profile has been updated. Thank's for using UtubeVyapar",
+              backgroundColor: Colors.red.shade100,
+              snackPosition: SnackPosition.BOTTOM);
         } else {
           print('Response status: ${response.statusCode}');
           print('Response body: ${response.body}');
           Get.snackbar("Error", "Unable to submit channel link. Please report",
               backgroundColor: Colors.red.shade100,
-              snackPosition: SnackPosition.TOP);
+              snackPosition: SnackPosition.BOTTOM);
         }
       }
     }
@@ -72,8 +76,7 @@ class UserInformationController extends GetxController {
     } else {
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
-      Get.snackbar(
-          "response.statusCode", "Unable to create user. Please report",
+      Get.snackbar("Error", "Unable to create user. Please report",
           backgroundColor: Colors.red.shade100,
           snackPosition: SnackPosition.TOP);
     }
@@ -87,8 +90,7 @@ class UserInformationController extends GetxController {
     } else {
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
-      Get.snackbar(
-          "response.statusCode", "Unable to create user. Please report",
+      Get.snackbar("Error", "Unable to create user. Please report",
           backgroundColor: Colors.red.shade100,
           snackPosition: SnackPosition.TOP);
     }

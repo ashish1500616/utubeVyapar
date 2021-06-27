@@ -24,8 +24,8 @@ class CreateCampaignController extends GetxController {
       var dataMap = new Map();
       dataMap["uuid"] = FirebaseAuth.instance.currentUser!.uid.toString();
       if (validate()) {
-        if (Utilities
-            .validateYoutubeLink(youtube_video_link_text_controller.text)) {
+        if (Utilities.validateYoutubeLink(
+            youtube_video_link_text_controller.text)) {
           dataMap["video_url"] = youtube_video_link_text_controller.text;
           dataMap["video_category_id"] = video_category!.value;
           postYoutubeVideoLink(dataMap);
@@ -50,7 +50,7 @@ class CreateCampaignController extends GetxController {
       print('Response body: ${response.body}');
       Get.snackbar("response.statusCode", "Unable to push video to public pool",
           backgroundColor: Colors.red.shade100,
-          snackPosition: SnackPosition.TOP);
+          snackPosition: SnackPosition.BOTTOM);
     }
   }
 
