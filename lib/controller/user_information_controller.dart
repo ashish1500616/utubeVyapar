@@ -41,11 +41,12 @@ class UserInformationController extends GetxController {
           formKey.currentState!.fields["channel_category_choice_chip"];
       var channelCategoryValue = channelCategory!.value;
       if (validate()) {
-        var uid = FirebaseAuth.instance.currentUser!.uid.toString();
-        var youtubeChannel = youtube_channel_link.text;
-        var url = Uri.parse(
-            'https://vipa3p.deta.dev/api/users/channel/$uid/$youtubeChannel/$channelCategoryValue');
-        var response = await http.get(url);
+        var dataMap = new Map();
+        dataMap["uuid"] = FirebaseAuth.instance.currentUser!.uid.toString();
+        dataMap["youtube_channel"] = youtube_channel_link.text;
+        dataMap["youtube_channel_category"] = channelCategoryValue;
+        var url = Uri.parse('https://vipa3p.deta.dev/api/users/add/channel');
+        var response = await http.post(url, body: json.encode(dataMap));
         print(response);
         if (response.statusCode == 200) {
           Get.back();
