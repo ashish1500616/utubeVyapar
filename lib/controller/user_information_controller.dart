@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:http/http.dart' as http;
 import 'package:utubevyappar/controller/utilities.dart';
 
@@ -11,6 +12,36 @@ class UserInformationController extends GetxController {
   TextEditingController youtube_channel_link = TextEditingController();
   static bool isUserNew = false;
   var formKey = GlobalKey<FormBuilderState>();
+  // promote youtube channel unit
+  late BannerAd bannerAdFifth;
+  static const BANNER_UNIT_5 = "ca-app-pub-5225835586845251/3049307078";
+
+  @override
+  void onInit() {
+    super.onInit();
+    createAndLoadFifthBannerAd();
+  }
+
+  createAndLoadFifthBannerAd() {
+    bannerAdFifth = BannerAd(
+        adUnitId: BANNER_UNIT_5,
+        request: AdRequest(),
+        size: AdSize.largeBanner,
+        listener: BannerAdListener(
+          onAdLoaded: (Ad ad) => () {
+            print("Banner Third Is Ready");
+            print('Ad loaded.');
+          },
+          onAdFailedToLoad: (Ad ad, LoadAdError error) {
+            ad.dispose();
+            print('Ad failed to load: $error');
+          },
+          onAdOpened: (Ad ad) => print('Ad opened.'),
+          onAdClosed: (Ad ad) => Get.toNamed("/watchVideo"),
+          onAdImpression: (Ad ad) => print('Ad impression.'),
+        ));
+    bannerAdFifth.load();
+  }
 
   createNewUserOnDeta() {
     var dataMap = new Map();

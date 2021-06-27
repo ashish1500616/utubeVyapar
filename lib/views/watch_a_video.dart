@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:utubevyappar/controller/AdsController.dart';
+import 'package:utubevyappar/controller/ads_controller.dart';
 import 'package:utubevyappar/controller/watch_video_controller.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -20,7 +20,8 @@ class _WatchVideoState extends State<WatchVideo> {
         Get.put(WatchVideoController());
     CountDownController _countDownController =
         watchVideoController.getTimerController();
-    AdsController adsController = Get.find();
+    watchVideoController.createAndLoadThirdBannerAd();
+    AdsController adsController = Get.put(AdsController());
     // Calling On Start fix this;
     // watchVideoController.getRandomCampaignURL();
     return Scaffold(
@@ -98,7 +99,9 @@ class _WatchVideoState extends State<WatchVideo> {
                         watchVideoController.getAndPlayRandomCampaign();
                         // Pass Value instead of hard coded value
                         watchVideoController.settlePoints(100);
-                        adsController.showInterstitialAd();
+                        if (adsController.isInterstitialAdLoaded == true) {
+                          adsController.showInterstitialAd();
+                        }
                       },
                     ),
                   ),
@@ -117,7 +120,7 @@ class _WatchVideoState extends State<WatchVideo> {
                   children: [
                     Container(
                       margin: EdgeInsets.only(top: 10),
-                      child: Text("Coins",
+                      child: Text("Vyapar Coins",
                           style: TextStyle(
                             color: Colors.deepOrange.shade600,
                             fontSize: 20,
@@ -153,9 +156,9 @@ class _WatchVideoState extends State<WatchVideo> {
             SizedBox(height: 20),
             Container(
               alignment: Alignment.center,
-              child: AdWidget(ad: adsController.bannerAdThird),
-              width: adsController.bannerAdThird.size.width.toDouble(),
-              height: adsController.bannerAdThird.size.height.toDouble(),
+              child: AdWidget(ad: watchVideoController.bannerAdThird),
+              width: watchVideoController.bannerAdThird.size.width.toDouble(),
+              height: watchVideoController.bannerAdThird.size.height.toDouble(),
             ),
             SizedBox(height: 20),
             Obx(
@@ -193,6 +196,26 @@ class _WatchVideoState extends State<WatchVideo> {
                     )
                   : Container(),
             ),
+            Divider(
+              height: 2,
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  Text(
+                    "We credit 100 Vyapar Coins for every video you watch & We debit 100 Vyapar Coins for every view by a user on the UtubeVyapar Network.",
+                    style: TextStyle(
+                        color: Colors.blue.shade300,
+                        fontSize: 12,
+                        letterSpacing: 0.5),
+                  ),
+                ],
+              ),
+            ),
+            Divider(
+              height: 2,
+            ),
             Padding(
               padding: EdgeInsets.all(20),
               child: Column(
@@ -206,7 +229,10 @@ class _WatchVideoState extends State<WatchVideo> {
                   ),
                 ],
               ),
-            )
+            ),
+            Divider(
+              height: 2,
+            ),
             /*    : Container()),*/
           ],
         ),

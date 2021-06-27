@@ -4,22 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:utubevyappar/controller/AdsController.dart';
 import 'package:utubevyappar/controller/home_page_controller.dart';
-import 'package:utubevyappar/controller/utilities.dart';
 import 'package:utubevyappar/views/create_campaign.dart';
 import 'package:utubevyappar/views/widgets/promote_channel.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    HomePageController homePageController = Get.put(HomePageController());
     String currentUserName =
         FirebaseAuth.instance.currentUser!.displayName.toString();
     currentUserName = currentUserName[0].toUpperCase() +
         currentUserName.substring(1).toLowerCase();
+    homePageController.createAndLoadFirstBannerAd();
+    homePageController.createAndLoadSecondBannerAd();
     final _mediaQuery = MediaQuery.of(context).size;
-    HomePageController homePageController = Get.put(HomePageController());
-    AdsController adsController = Get.put(AdsController());
     return Scaffold(
       appBar: AppBar(
         title: Text("UtubeVyapar"),
@@ -59,7 +58,7 @@ class HomePage extends StatelessWidget {
                       Get.toNamed("/watchVideo"),
                     },
                     child: Container(
-                      height: _mediaQuery.height * 0.3,
+                      height: _mediaQuery.height * 0.25,
                       width: _mediaQuery.width * 0.3,
                       child: Column(
                         children: [
@@ -96,7 +95,7 @@ class HomePage extends StatelessWidget {
                       );
                     },
                     child: Container(
-                      height: _mediaQuery.height * 0.3,
+                      height: _mediaQuery.height * 0.25,
                       width: _mediaQuery.width * 0.3,
                       child: Column(
                         children: [
@@ -109,7 +108,7 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           const Text(
-                            "Create Campaign",
+                            "Promote Your Video",
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontSize: 15,
@@ -124,6 +123,18 @@ class HomePage extends StatelessWidget {
                   PromoteChannel(),
                 ],
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                alignment: Alignment.center,
+                child: AdWidget(ad: homePageController.bannerAdFirst),
+                width: homePageController.bannerAdFirst.size.width.toDouble(),
+                height: homePageController.bannerAdFirst.size.height.toDouble(),
+              ),
+              SizedBox(
+                height: 10,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -135,7 +146,7 @@ class HomePage extends StatelessWidget {
                     },
                     child: Container(
                       margin: EdgeInsets.all(5),
-                      height: _mediaQuery.height * 0.3,
+                      height: _mediaQuery.height * 0.2,
                       width: _mediaQuery.width * 0.3,
                       child: Column(
                         children: [
@@ -174,7 +185,7 @@ class HomePage extends StatelessWidget {
                     },
                     child: Container(
                       margin: EdgeInsets.all(5),
-                      height: _mediaQuery.height * 0.3,
+                      height: _mediaQuery.height * 0.2,
                       width: _mediaQuery.width * 0.3,
                       child: Column(
                         children: [
@@ -207,7 +218,7 @@ class HomePage extends StatelessWidget {
                     },
                     child: Container(
                       margin: EdgeInsets.all(5),
-                      height: _mediaQuery.height * 0.3,
+                      height: _mediaQuery.height * 0.2,
                       width: _mediaQuery.width * 0.3,
                       child: Column(
                         children: [
@@ -234,20 +245,18 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
-                alignment: Alignment.center,
-                child: AdWidget(ad: adsController.bannerAdSecond),
-                width: adsController.bannerAdSecond.size.width.toDouble(),
-                height: adsController.bannerAdSecond.size.height.toDouble(),
-              ),
               SizedBox(
                 height: 10,
               ),
               Container(
                 alignment: Alignment.center,
-                child: AdWidget(ad: adsController.bannerAdFirst),
-                width: adsController.bannerAdFirst.size.width.toDouble(),
-                height: adsController.bannerAdFirst.size.height.toDouble(),
+                child: AdWidget(ad: homePageController.bannerAdSecond),
+                width: homePageController.bannerAdSecond.size.width.toDouble(),
+                height:
+                    homePageController.bannerAdSecond.size.height.toDouble(),
+              ),
+              SizedBox(
+                height: 10,
               ),
               Row(children: [
                 Container(

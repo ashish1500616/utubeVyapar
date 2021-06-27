@@ -1,13 +1,17 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:utubevyappar/controller/AdsController.dart';
 import 'package:utubevyappar/services/fetch_user_service.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class WatchVideoController extends GetxController {
   CountDownController _timerController = CountDownController();
   FetchUserService fetchUserService = Get.put(FetchUserService());
+
+  // watch page unit
+  late BannerAd bannerAdThird;
+  static const BANNER_UNIT_3 = "ca-app-pub-5225835586845251/2552814756";
   late YoutubePlayerController youtubePlayerController;
   var currentPoint = "0".obs;
   var currentDuration = 15.obs;
@@ -21,7 +25,7 @@ class WatchVideoController extends GetxController {
     youtubePlayerController = YoutubePlayerController(
       // TODO:  Change hard coded initial video to constant
       initialVideoId:
-          YoutubePlayer.convertUrlToId("https://youtu.be/knmIyz9A5Lw")
+          YoutubePlayer.convertUrlToId("https://youtu.be/b-wtOYN4P1Y")
               .toString(),
       flags: YoutubePlayerFlags(
         enableCaption: false,
@@ -109,32 +113,24 @@ class WatchVideoController extends GetxController {
     return url;
   }
 
-/*  Future<void> launchUniversalLink() async {
-    print(youtubeChannel.value);
-    var url = youtubeChannel.value;
-    if (await canLaunch(url)) {
-      final bool nativeAppLaunchSucceeded = await launch(
-        url,
-        forceSafariVC: false,
-        universalLinksOnly: true,
-      );
-      if (!nativeAppLaunchSucceeded) {
-        await launch(url, forceSafariVC: true);
-      }
-    }
+  createAndLoadThirdBannerAd() {
+    bannerAdThird = BannerAd(
+        adUnitId: BANNER_UNIT_3,
+        request: AdRequest(),
+        size: AdSize.largeBanner,
+        listener: BannerAdListener(
+          onAdLoaded: (Ad ad) => () {
+            print("Banner Third Is Ready");
+            print('Ad loaded.');
+          },
+          onAdFailedToLoad: (Ad ad, LoadAdError error) {
+            ad.dispose();
+            print('Ad failed to load: $error');
+          },
+          onAdOpened: (Ad ad) => print('Ad opened.'),
+          onAdClosed: (Ad ad) => print('Ad closed.'),
+          onAdImpression: (Ad ad) => print('Ad impression.'),
+        ));
+    bannerAdThird.load();
   }
-
-  Future<void> launchInApp() async {
-    print(youtubeChannel.value);
-    if (await canLaunch(youtubeChannel.value)) {
-      await launch(
-        youtubeChannel.value,
-        forceSafariVC: true,
-        forceWebView: false,
-        headers: <String, String>{'header_key': 'header_value'},
-      );
-    } else {
-      throw 'Could not launch youtube url';
-    }
-  }*/
 }

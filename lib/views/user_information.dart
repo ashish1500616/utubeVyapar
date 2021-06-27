@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:utubevyappar/controller/AdsController.dart';
 import 'package:utubevyappar/controller/user_information_controller.dart';
 
 class UserInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserInformationController userInformationController = Get.find();
-    AdsController adsController = Get.find();
     final _mediaQuery = MediaQuery.of(context).size;
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
@@ -205,9 +203,11 @@ class UserInformation extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.center,
-            child: AdWidget(ad: adsController.bannerAdThird),
-            width: adsController.bannerAdThird.size.width.toDouble(),
-            height: adsController.bannerAdThird.size.height.toDouble(),
+            child: AdWidget(ad: userInformationController.bannerAdFifth),
+            width:
+                userInformationController.bannerAdFifth.size.width.toDouble(),
+            height:
+                userInformationController.bannerAdFifth.size.height.toDouble(),
           ),
           SizedBox(height: 20),
           Container(

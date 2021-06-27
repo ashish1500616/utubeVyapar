@@ -14,7 +14,7 @@ class PromoteChannel extends StatelessWidget {
       },
       child: Container(
         margin: EdgeInsets.all(5),
-        height: _mediaQuery.height * 0.3,
+        height: _mediaQuery.height * 0.25,
         width: _mediaQuery.width * 0.3,
         child: Column(
           children: [

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:utubevyappar/controller/AdsController.dart';
 import 'package:utubevyappar/controller/create_campaign_controller.dart';
 import 'package:utubevyappar/controller/home_page_controller.dart';
 
@@ -12,7 +11,6 @@ class CreateCampaign extends StatelessWidget {
     CreateCampaignController createCampaignController =
         Get.put(CreateCampaignController());
     HomePageController homePageController = Get.find();
-    AdsController adsController = Get.find();
     final _mediaQuery = MediaQuery.of(context).size;
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
@@ -193,9 +191,9 @@ class CreateCampaign extends StatelessWidget {
           SizedBox(height: 20),
           Container(
             alignment: Alignment.center,
-            child: AdWidget(ad: adsController.bannerAdThird),
-            width: adsController.bannerAdThird.size.width.toDouble(),
-            height: adsController.bannerAdThird.size.height.toDouble(),
+            child: AdWidget(ad: createCampaignController.bannerAdFourth),
+            width: createCampaignController.bannerAdFourth.size.width.toDouble(),
+            height: createCampaignController.bannerAdFourth.size.height.toDouble(),
           ),
           SizedBox(height: 20),
           Container(

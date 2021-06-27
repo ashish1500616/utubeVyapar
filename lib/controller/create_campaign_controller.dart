@@ -4,17 +4,23 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:http/http.dart' as http;
 import 'package:utubevyappar/controller/utilities.dart';
 
 class CreateCampaignController extends GetxController {
   TextEditingController youtube_video_link_text_controller =
       TextEditingController();
+
+  // promote video unit
+  static const BANNER_UNIT_4 = "ca-app-pub-5225835586845251/8199360278";
+  late BannerAd bannerAdFourth;
   var formKey = GlobalKey<FormBuilderState>();
 
   @override
   void onInit() {
     super.onInit();
+    createAndLoadFourthBannerAd();
   }
 
   submitVideoLink() {
@@ -68,5 +74,26 @@ class CreateCampaignController extends GetxController {
           snackPosition: SnackPosition.BOTTOM);
       return false;
     }
+  }
+
+  createAndLoadFourthBannerAd() {
+    bannerAdFourth = BannerAd(
+        adUnitId: BANNER_UNIT_4,
+        request: AdRequest(),
+        size: AdSize.largeBanner,
+        listener: BannerAdListener(
+          onAdLoaded: (Ad ad) => () {
+            print("Banner Third Is Ready");
+            print('Ad loaded.');
+          },
+          onAdFailedToLoad: (Ad ad, LoadAdError error) {
+            ad.dispose();
+            print('Ad failed to load: $error');
+          },
+          onAdOpened: (Ad ad) => print('Ad opened.'),
+          onAdClosed: (Ad ad) => print('Ad closed.'),
+          onAdImpression: (Ad ad) => print('Ad impression.'),
+        ));
+    bannerAdFourth.load();
   }
 }
