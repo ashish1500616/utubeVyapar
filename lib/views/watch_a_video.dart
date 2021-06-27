@@ -198,7 +198,7 @@ class _WatchVideoState extends State<WatchVideo> {
               child: Column(
                 children: [
                   Text(
-                    "Please add your channel if not added yet to get subscribers from UtubeVyapar network.",
+                    "Please add your channel under Home -> Promote Your Channel,  if not added yet to get subscribers from UtubeVyapar network.",
                     style: TextStyle(
                         color: Colors.blue.shade300,
                         fontSize: 12,

@@ -58,7 +58,8 @@ class HomePage extends StatelessWidget {
                       Get.toNamed("/watchVideo"),
                     },
                     child: Container(
-                      width: _mediaQuery.width * 0.5,
+                      height: _mediaQuery.height * 0.3,
+                      width: _mediaQuery.width * 0.3,
                       child: Column(
                         children: [
                           Padding(
@@ -67,14 +68,14 @@ class HomePage extends StatelessWidget {
                               child: Image.asset(
                                 "assets/images/watch_video.png",
                                 fit: BoxFit.contain,
-                                height: 150,
+                                height: 100,
                                 width: 200,
                               ),
                             ),
                           ),
                           const Text(
                             "Watch Videos",
-                            textAlign: TextAlign.left,
+                            textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontSize: 15,
                               fontFamily: 'Open Sans',
@@ -94,65 +95,20 @@ class HomePage extends StatelessWidget {
                       );
                     },
                     child: Container(
-                      width: _mediaQuery.width * 0.5,
-                      child: Column(
-                        children: [
-                          Card(
-                            child: Image.asset(
-                              "assets/images/video_campaign.png",
-                              fit: BoxFit.contain,
-                              height: 150,
-                              width: 200,
-                            ),
-                          ),
-                          const Text(
-                            "Create Campaign",
-                            textAlign: TextAlign.left,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontFamily: 'Open Sans',
-                              fontWeight: FontWeight.normal,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20),
-              Container(
-                alignment: Alignment.center,
-                child: AdWidget(ad: homePageController.bannerAdFirst),
-                width: homePageController.bannerAdFirst.size.width.toDouble(),
-                height: homePageController.bannerAdFirst.size.height.toDouble(),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  PromoteChannel(),
-                  InkWell(
-                    onTap: () {
-                      print("Opening telegram channel.");
-                      launch("https://t.me/joinchat/gbJk-jKQPMxiMzc1",
-                          forceSafariVC: false);
-                    },
-                    child: Container(
-                      margin: EdgeInsets.all(5),
                       height: _mediaQuery.height * 0.3,
                       width: _mediaQuery.width * 0.3,
                       child: Column(
                         children: [
                           Card(
                             child: Image.asset(
-                              "assets/images/telegram.png",
+                              "assets/images/video_campaign.png",
                               fit: BoxFit.contain,
                               height: 100,
                               width: 200,
                             ),
                           ),
                           const Text(
-                            "Join On Telegram",
+                            "Create Campaign",
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontSize: 15,
@@ -164,9 +120,15 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  PromoteChannel(),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
                   InkWell(
                     onTap: () {
-                      print("Opening telegram channel.");
+                      print(".");
                       launch("https://t.me/joinchat/gbJk-jKQPMxiMzc1",
                           forceSafariVC: false);
                     },
@@ -204,6 +166,71 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  InkWell(
+                    onTap: () {
+                      print("Share App.");
+                      homePageController.share();
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(5),
+                      height: _mediaQuery.height * 0.3,
+                      width: _mediaQuery.width * 0.3,
+                      child: Column(
+                        children: [
+                          Card(
+                            child: Image.asset(
+                              "assets/images/share-app.png",
+                              fit: BoxFit.contain,
+                              height: 100,
+                              width: 200,
+                            ),
+                          ),
+                          const Text(
+                            "Share App",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.normal,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      print("Opening telegram channel.");
+                      launch("https://t.me/joinchat/gbJk-jKQPMxiMzc1",
+                          forceSafariVC: false);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(5),
+                      height: _mediaQuery.height * 0.3,
+                      width: _mediaQuery.width * 0.3,
+                      child: Column(
+                        children: [
+                          Card(
+                            child: Image.asset(
+                              "assets/images/telegram.png",
+                              fit: BoxFit.contain,
+                              height: 100,
+                              width: 200,
+                            ),
+                          ),
+                          const Text(
+                            "Join On Telegram",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.normal,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
               Container(
@@ -212,6 +239,15 @@ class HomePage extends StatelessWidget {
                 width: homePageController.bannerAdSecond.size.width.toDouble(),
                 height:
                     homePageController.bannerAdSecond.size.height.toDouble(),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                alignment: Alignment.center,
+                child: AdWidget(ad: homePageController.bannerAdFirst),
+                width: homePageController.bannerAdFirst.size.width.toDouble(),
+                height: homePageController.bannerAdFirst.size.height.toDouble(),
               ),
               Row(children: [
                 Container(

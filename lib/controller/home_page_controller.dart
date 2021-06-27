@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:new_version/new_version.dart';
@@ -18,7 +20,7 @@ class HomePageController extends GetxController {
     userInformationController.createNewUserOnDeta();
     _checkVersion();
     bannerAdFirst = BannerAd(
-        adUnitId: "ca-app-pub-5225835586845251/9410986702",
+        adUnitId: "ca-app-pub-3940256099942544/6300978111",
         request: AdRequest(),
         size: AdSize.largeBanner,
         listener: BannerAdListener(
@@ -43,7 +45,7 @@ class HomePageController extends GetxController {
 
     bannerAdFirst.load();
     bannerAdSecond = BannerAd(
-        adUnitId: "ca-app-pub-5225835586845251/9259777616",
+        adUnitId: "ca-app-pub-3940256099942544/6300978111",
         request: AdRequest(),
         size: AdSize.largeBanner,
         listener: BannerAdListener(
@@ -72,5 +74,31 @@ class HomePageController extends GetxController {
   void _checkVersion() {
     final newVersion = NewVersion(androidId: "com.wowcodes.utubeVyapar");
     newVersion.showAlertIfNecessary(context: Get.context!);
+  }
+
+  Future<void> share() async {
+    await FlutterShare.share(
+        title: 'Grow On Youtube, From Flop To Top',
+        text:
+            'Vyapar on Youtube with UtubeVyapar. Grow On Youtube, From Flop To Top',
+        linkUrl: 'https://wowcodes.tech/',
+        chooserTitle: 'Vyapar on Youtube with UtubeVyapar');
+  }
+
+  validateYoutubeLink(url) {
+    var youtubeVideoLink = Uri.parse(url);
+    if (youtubeVideoLink.scheme != "http" ||
+        youtubeVideoLink.scheme != "https") {
+      youtubeVideoLink = Uri.parse("https://" + url);
+    }
+    if ((youtubeVideoLink.host != "www.youtube.com") &&
+        (youtubeVideoLink.host != "www.youtu.be")) {
+      Get.snackbar("Youtube link is invalid",
+          "At the moment we only support links from https://www.youtube.com or https://www.youtu.be",
+          backgroundColor: Colors.red.shade100,
+          snackPosition: SnackPosition.BOTTOM);
+      return false;
+    }
+    return true;
   }
 }

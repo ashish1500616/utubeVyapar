@@ -9,7 +9,6 @@ class PromoteChannel extends StatelessWidget {
     final _mediaQuery = MediaQuery.of(context).size;
     return InkWell(
       onTap: () {
-        // Get.toNamed("/userInformation");
         Get.bottomSheet(UserInformation(),
             isScrollControlled: true, backgroundColor: Colors.white);
       },

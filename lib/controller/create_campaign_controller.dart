@@ -25,7 +25,8 @@ class CreateCampaignController extends GetxController {
       var dataMap = new Map();
       dataMap["uuid"] = FirebaseAuth.instance.currentUser!.uid.toString();
       if (validate()) {
-        if (validateYoutubeLink(youtube_video_link_text_controller.text)) {
+        if (homePageController
+            .validateYoutubeLink(youtube_video_link_text_controller.text)) {
           dataMap["video_url"] = youtube_video_link_text_controller.text;
           dataMap["video_category_id"] = video_category!.value;
           postYoutubeVideoLink(dataMap);
@@ -33,24 +34,6 @@ class CreateCampaignController extends GetxController {
         }
       }
     }
-  }
-
-  validateYoutubeLink(url) {
-    var youtubeVideoLink = Uri.parse(url);
-    if (youtubeVideoLink.scheme != "http" ||
-        youtubeVideoLink.scheme != "https") {
-      youtubeVideoLink =
-          Uri.parse("https://" + youtube_video_link_text_controller.text);
-    }
-    if ((youtubeVideoLink.host != "www.youtube.com") &&
-        (youtubeVideoLink.host != "youtu.be")) {
-      Get.snackbar("Youtube link is invalid",
-          "At the moment we only support links from https://www.youtube.com or https://www.youtu.be",
-          backgroundColor: Colors.red.shade100,
-          snackPosition: SnackPosition.BOTTOM);
-      return false;
-    }
-    return true;
   }
 
   postYoutubeVideoLink(data) async {

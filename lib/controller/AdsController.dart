@@ -15,7 +15,7 @@ class AdsController extends GetxController {
 
   createAndLoadThirdBannerAd() {
     bannerAdThird = BannerAd(
-        adUnitId: "ca-app-pub-5225835586845251/2552814756",
+        adUnitId: "ca-app-pub-3940256099942544/6300978111",
         request: AdRequest(),
         size: AdSize.largeBanner,
         listener: BannerAdListener(
@@ -48,7 +48,7 @@ class AdsController extends GetxController {
 
   createInterstitialAd() {
     InterstitialAd.load(
-      adUnitId: 'ca-app-pub-5225835586845251/8926651414',
+      adUnitId: 'ca-app-pub-3940256099942544/1033173712',
       request: AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         // if ad fails to load
@@ -92,37 +92,4 @@ class AdsController extends GetxController {
 
     myInterstitial!.show();
   }
-
-/*
-  createRewardedAds() {
-    RewardedAd.load(
-      adUnitId: ,
-      request: AdRequest(),
-      rewardedAdLoadCallback: RewardedAdLoadCallback(
-        onAdLoaded: (ad) {
-          this._rewardedAd = ad;
-
-          ad.fullScreenContentCallback = FullScreenContentCallback(
-            onAdDismissedFullScreenContent: (ad) {
-              setState(() {
-                _isRewardedAdReady = false;
-              });
-              _loadRewardedAd();
-            },
-          );
-
-          setState(() {
-            _isRewardedAdReady = true;
-          });
-        },
-        onAdFailedToLoad: (err) {
-          print('Failed to load a rewarded ad: ${err.message}');
-          setState(() {
-            _isRewardedAdReady = false;
-          });
-        },
-      ),
-    );
-  }
-*/
 }
