@@ -5,11 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:utubevyappar/controller/home_page_controller.dart';
+import 'package:utubevyappar/controller/utilities.dart';
 
 class UserInformationController extends GetxController {
   TextEditingController youtube_channel_link = TextEditingController();
-  HomePageController homePageController = Get.find();
   static bool isUserNew = false;
   var formKey = GlobalKey<FormBuilderState>();
 
@@ -43,7 +42,7 @@ class UserInformationController extends GetxController {
           formKey.currentState!.fields["channel_category_choice_chip"];
       var channelCategoryValue = channelCategory!.value;
       if (validate() &&
-          homePageController.validateYoutubeLink(youtube_channel_link.text)) {
+          Utilities.validateYoutubeLink(youtube_channel_link.text)) {
         var dataMap = new Map();
         dataMap["uuid"] = FirebaseAuth.instance.currentUser!.uid.toString();
         dataMap["youtube_channel"] = youtube_channel_link.text;

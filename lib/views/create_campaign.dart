@@ -218,6 +218,7 @@ class CreateCampaign extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(height: 20),
         ],
       ),
     );

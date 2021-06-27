@@ -5,12 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:utubevyappar/controller/home_page_controller.dart';
+import 'package:utubevyappar/controller/utilities.dart';
 
 class CreateCampaignController extends GetxController {
   TextEditingController youtube_video_link_text_controller =
       TextEditingController();
-  HomePageController homePageController = Get.find();
   var formKey = GlobalKey<FormBuilderState>();
 
   @override
@@ -25,7 +24,7 @@ class CreateCampaignController extends GetxController {
       var dataMap = new Map();
       dataMap["uuid"] = FirebaseAuth.instance.currentUser!.uid.toString();
       if (validate()) {
-        if (homePageController
+        if (Utilities
             .validateYoutubeLink(youtube_video_link_text_controller.text)) {
           dataMap["video_url"] = youtube_video_link_text_controller.text;
           dataMap["video_category_id"] = video_category!.value;
