@@ -20,7 +20,7 @@ class Utilities {
   }
 
   static validateYoutubeLink(url) {
-    if (isValidYoutubeLink(url)) {
+    if (!isValidYoutubeLink(url)) {
       Get.snackbar("Youtube link is invalid",
           "At the moment we only support links from https://www.youtube.com or https://www.youtu.be",
           backgroundColor: Colors.red.shade100,
