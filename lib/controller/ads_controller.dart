@@ -9,6 +9,7 @@ class AdsController extends GetxController {
 
   @override
   void onInit() {
+    super.onInit();
     createInterstitialAd();
   }
 
