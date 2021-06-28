@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:utubevyappar/controller/ads_controller.dart';
+import 'package:utubevyappar/controller/utilities.dart';
 import 'package:utubevyappar/controller/watch_video_controller.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -162,11 +163,12 @@ class _WatchVideoState extends State<WatchVideo> {
             ),
             SizedBox(height: 20),
             Obx(
-              () => (watchVideoController.youtubeChannel.value != "")
+              () => (Utilities.isValidYoutubeLink(
+                      watchVideoController.youtubeChannel.value))
                   ? InkWell(
                       onTap: () {
-                        watchVideoController.launchInWebViewWithJavaScript();
-                        // watchVideoController.delegateOpeningYoutubeChannelLink();
+                        Utilities.launchInWebViewWithJavaScript(
+                            watchVideoController.getYoutubeChannelLink());
                       },
                       child: Container(
                         width: _mediaQuery.width * 0.5,
@@ -204,10 +206,24 @@ class _WatchVideoState extends State<WatchVideo> {
               child: Column(
                 children: [
                   Text(
-                    "We credit 100 Vyapar Coins for every video you watch & We debit 100 Vyapar Coins for every view by a user on the UtubeVyapar Network.",
+                    "We credit 100 VyaparCoins for every video you watch & We debit 100 VyaparCoins for every view by a user on the UtubeVyapar Network.",
                     style: TextStyle(
                         color: Colors.blue.shade300,
-                        fontSize: 12,
+                        fontSize: 15,
+                        letterSpacing: 0.5),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  Text(
+                    "Note : We will remove your videos pushed in the public pool if your VyaparCoins becomes 0 or negative.",
+                    style: TextStyle(
+                        color: Colors.red.shade300,
+                        fontSize: 15,
                         letterSpacing: 0.5),
                   ),
                 ],
@@ -224,7 +240,7 @@ class _WatchVideoState extends State<WatchVideo> {
                     "Please add your channel under Home -> Promote Your Channel,  if not added yet to get subscribers from UtubeVyapar network.",
                     style: TextStyle(
                         color: Colors.blue.shade300,
-                        fontSize: 12,
+                        fontSize: 15,
                         letterSpacing: 0.5),
                   ),
                 ],
