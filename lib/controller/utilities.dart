@@ -8,8 +8,9 @@ class Utilities {
 
   static isValidYoutubeLink(url) {
     var youtubeVideoLink = Uri.parse(url);
-    if (youtubeVideoLink.scheme != "http" ||
+    if (youtubeVideoLink.scheme != "http" &&
         youtubeVideoLink.scheme != "https") {
+      // link does not contain both http and https
       youtubeVideoLink = Uri.parse("https://" + url);
     }
     if ((youtubeVideoLink.host != "www.youtube.com") &&
