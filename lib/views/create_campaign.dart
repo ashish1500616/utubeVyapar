@@ -10,6 +10,7 @@ class CreateCampaign extends StatelessWidget {
   Widget build(BuildContext context) {
     CreateCampaignController createCampaignController =
         Get.put(CreateCampaignController());
+    createCampaignController.createAndLoadFourthBannerAd();
     HomePageController homePageController = Get.find();
     final _mediaQuery = MediaQuery.of(context).size;
     return SingleChildScrollView(
@@ -25,7 +26,7 @@ class CreateCampaign extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: const Text(
-                      "Youtube Link *",
+                      "Video Link",
                       style: TextStyle(
                         color: Colors.black87,
                         fontSize: 20,
@@ -52,38 +53,65 @@ class CreateCampaign extends StatelessWidget {
           /* complete address */
           Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: TextField(
-                  onSubmitted: (value) {
-                    print(value);
-                  },
-                  controller: createCampaignController
-                      .youtube_video_link_text_controller,
-                  style: TextStyle(color: Colors.black87),
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.label_important,
-                      color: Colors.orange,
-                    ),
-                    hintStyle:
-                        const TextStyle(fontSize: 16.0, color: Colors.black87),
-                    hintText: 'Paste your link here',
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black87, width: 1.0),
-                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black87, width: 2.0),
-                      borderRadius: BorderRadius.all(Radius.circular(32.0)),
+              Row(
+                children: [
+                  Container(
+                    width: _mediaQuery.width * 0.8,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: TextField(
+                        toolbarOptions: ToolbarOptions(
+                          cut: true,
+                          copy: true,
+                          selectAll: true,
+                          paste: true,
+                        ),
+                        autofocus: false,
+                        onSubmitted: (value) {
+                          print(value);
+                        },
+                        controller: createCampaignController
+                            .youtube_video_link_text_controller,
+                        style: TextStyle(color: Colors.black87),
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.label_important,
+                            color: Colors.orange,
+                          ),
+                          hintStyle: const TextStyle(
+                              fontSize: 16.0, color: Colors.black87),
+                          hintText: 'Paste your link here',
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 20.0),
+                          border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32.0)),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.black87, width: 1.0),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32.0)),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.black87, width: 2.0),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32.0)),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                  Container(
+                    width: _mediaQuery.width * 0.2,
+                    child: IconButton(
+                        onPressed: () {
+                          createCampaignController.pasteFromClipboard();
+                        },
+                        icon: Icon(Icons.paste)),
+                  )
+                ],
               ),
               Container(
                 padding: EdgeInsets.all(10),
@@ -192,8 +220,10 @@ class CreateCampaign extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             child: AdWidget(ad: createCampaignController.bannerAdFourth),
-            width: createCampaignController.bannerAdFourth.size.width.toDouble(),
-            height: createCampaignController.bannerAdFourth.size.height.toDouble(),
+            width:
+                createCampaignController.bannerAdFourth.size.width.toDouble(),
+            height:
+                createCampaignController.bannerAdFourth.size.height.toDouble(),
           ),
           SizedBox(height: 20),
           Container(

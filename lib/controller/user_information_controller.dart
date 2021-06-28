@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:clipboard/clipboard.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -12,6 +13,7 @@ class UserInformationController extends GetxController {
   TextEditingController youtube_channel_link = TextEditingController();
   static bool isUserNew = false;
   var formKey = GlobalKey<FormBuilderState>();
+
   // promote youtube channel unit
   late BannerAd bannerAdFifth;
   static const BANNER_UNIT_5 = "ca-app-pub-5225835586845251/3049307078";
@@ -20,6 +22,13 @@ class UserInformationController extends GetxController {
   void onInit() {
     super.onInit();
     createAndLoadFifthBannerAd();
+  }
+
+  pasteFromClipboard() {
+    FlutterClipboard.paste().then((value) {
+      // Do what ever you want with the value.
+      youtube_channel_link.text = value;
+    });
   }
 
   createAndLoadFifthBannerAd() {

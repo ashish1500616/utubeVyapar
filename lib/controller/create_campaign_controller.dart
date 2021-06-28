@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:clipboard/clipboard.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -21,6 +22,13 @@ class CreateCampaignController extends GetxController {
   void onInit() {
     super.onInit();
     createAndLoadFourthBannerAd();
+  }
+
+  pasteFromClipboard() {
+    FlutterClipboard.paste().then((value) {
+      // Do what ever you want with the value.
+      youtube_video_link_text_controller.text = value;
+    });
   }
 
   submitVideoLink() {
@@ -86,10 +94,10 @@ class CreateCampaignController extends GetxController {
             print("Banner Third Is Ready");
             print('Ad loaded.');
           },
-          onAdFailedToLoad: (Ad ad, LoadAdError error) {
+          /*onAdFailedToLoad: (Ad ad, LoadAdError error) {
             ad.dispose();
             print('Ad failed to load: $error');
-          },
+          },*/
           onAdOpened: (Ad ad) => print('Ad opened.'),
           onAdClosed: (Ad ad) => print('Ad closed.'),
           onAdImpression: (Ad ad) => print('Ad impression.'),
