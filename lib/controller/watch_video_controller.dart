@@ -109,7 +109,7 @@ class WatchVideoController extends GetxController {
             print('Ad loaded.');
           },
           onAdFailedToLoad: (Ad ad, LoadAdError error) {
-            ad.dispose();
+            // ad.dispose();
             print('Ad failed to load: $error');
           },
           onAdOpened: (Ad ad) => print('Ad opened.'),

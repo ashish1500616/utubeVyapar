@@ -94,10 +94,10 @@ class CreateCampaignController extends GetxController {
             print("Banner Third Is Ready");
             print('Ad loaded.');
           },
-          /*onAdFailedToLoad: (Ad ad, LoadAdError error) {
-            ad.dispose();
+          onAdFailedToLoad: (Ad ad, LoadAdError error) {
+            // ad.dispose();
             print('Ad failed to load: $error');
-          },*/
+          },
           onAdOpened: (Ad ad) => print('Ad opened.'),
           onAdClosed: (Ad ad) => print('Ad closed.'),
           onAdImpression: (Ad ad) => print('Ad impression.'),

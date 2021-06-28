@@ -36,7 +36,7 @@ class HomePageController extends GetxController {
           },
           onAdFailedToLoad: (Ad ad, LoadAdError error) {
             // Dispose the ad here to free resources.
-            ad.dispose();
+            // ad.dispose();
             print('Ad failed to load: $error');
           },
           onAdOpened: (Ad ad) => print('Ad opened.'),
@@ -56,7 +56,7 @@ class HomePageController extends GetxController {
             print('Ad loaded.');
           },
           onAdFailedToLoad: (Ad ad, LoadAdError error) {
-            ad.dispose();
+            // ad.dispose();
             print('Ad failed to load: $error');
           },
           onAdOpened: (Ad ad) => print('Ad opened.'),
