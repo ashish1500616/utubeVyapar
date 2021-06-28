@@ -3,10 +3,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:utubevyappar/controller/user_information_controller.dart';
+import 'package:utubevyappar/controller/welcome_controller.dart';
 
 class Authentication {
   UserInformationController userInformationController =
       Get.put(UserInformationController());
+  WelcomeController welcomeController = Get.find();
 
   static Future<FirebaseApp> initializeFirebase() async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
@@ -17,7 +19,8 @@ class Authentication {
     return firebaseApp;
   }
 
-  static Future<User?> signInWithGoogle() async {
+  Future<User?> signInWithGoogle() async {
+    welcomeController.isSubmit.value = true;
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;
 
@@ -49,6 +52,7 @@ class Authentication {
         if (user != null) {
           await assertChecks(user, auth);
           // Store the retrieved data
+          welcomeController.isSubmit.value = false;
           print(user.displayName);
           print(user.uid);
           /*
@@ -90,6 +94,7 @@ class Authentication {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     try {
       await FirebaseAuth.instance.signOut();
+      Get.toNamed("/welcome");
     } catch (e) {
       Get.snackbar("Error", "Error signing out. Try again..");
     }

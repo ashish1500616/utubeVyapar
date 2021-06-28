@@ -1,7 +1,6 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:utubevyappar/services/fetch_user_service.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -90,20 +89,6 @@ class WatchVideoController extends GetxController {
 
   void delegateOpeningYoutubeChannelLink() {
     Get.toNamed("/delegateToWebView");
-  }
-
-  Future<void> launchInWebViewWithJavaScript() async {
-    var url = getYoutubeChannelLink();
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceSafariVC: true,
-        forceWebView: true,
-        enableJavaScript: true,
-      );
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 
   getYoutubeChannelLink() {
