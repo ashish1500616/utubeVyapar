@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:utubevyappar/controller/home_page_controller.dart';
+import 'package:utubevyappar/services/authenticate.dart';
 import 'package:utubevyappar/views/create_campaign.dart';
 import 'package:utubevyappar/views/widgets/promote_channel.dart';
 
@@ -23,6 +24,20 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("UtubeVyapar"),
         leading: const Icon(Icons.monetization_on_outlined),
+        actions: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              onTap: () {
+                Authentication.signOut();
+              },
+              child: Icon(
+                Icons.logout,
+                size: 26.0,
+              ),
+            ),
+          )
+        ],
         backgroundColor: Colors.deepOrange.shade200,
       ),
       body: SafeArea(
