@@ -13,11 +13,17 @@ class Utilities {
       // link does not contain both http and https
       youtubeVideoLink = Uri.parse("https://" + url);
     }
-    if ((youtubeVideoLink.host != "www.youtube.com") &&
-        (youtubeVideoLink.host != "www.youtu.be")) {
-      return false;
+    var allowed_host = [
+      "www.youtube.com",
+      "youtube.com",
+      "youtu.be",
+      "www.youtu.be"
+    ];
+    if (allowed_host.contains(youtubeVideoLink.host) &&
+        youtubeVideoLink.hasAbsolutePath) {
+      return true;
     }
-    return true;
+    return false;
   }
 
   static validateYoutubeLink(url) {
