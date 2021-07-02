@@ -6,8 +6,8 @@ class Utilities {
   static const PRIVACY_URL =
       "https://sites.google.com/view/utubevyapar-privacy-policy/home";
 
-  static isValidYoutubeLink(url) {
-    var youtubeVideoLink = Uri.parse(url);
+  static isValidYoutubeLink(String url) {
+    var youtubeVideoLink = Uri.parse(url.trim());
     if (youtubeVideoLink.scheme != "http" &&
         youtubeVideoLink.scheme != "https") {
       // link does not contain both http and https

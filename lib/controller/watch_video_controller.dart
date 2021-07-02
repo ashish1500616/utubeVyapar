@@ -92,8 +92,7 @@ class WatchVideoController extends GetxController {
   }
 
   getYoutubeChannelLink() {
-    var url = Uri.decodeFull(
-        "https://" + youtubeChannel.value + "?sub_confirmation=1");
+    var url = Uri.decodeFull(youtubeChannel.value + "?sub_confirmation=1");
     url = url.replaceAll("\"", "");
     return url;
   }

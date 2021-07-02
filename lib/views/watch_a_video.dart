@@ -100,9 +100,9 @@ class _WatchVideoState extends State<WatchVideo> {
                         watchVideoController.getAndPlayRandomCampaign();
                         // Pass Value instead of hard coded value
                         watchVideoController.settlePoints(100);
-                        if (adsController.isInterstitialAdLoaded == true) {
+                        /*if (adsController.isInterstitialAdLoaded == true) {
                           adsController.showInterstitialAd();
-                        }
+                        }*/
                       },
                     ),
                   ),
@@ -163,8 +163,7 @@ class _WatchVideoState extends State<WatchVideo> {
             ),
             SizedBox(height: 20),
             Obx(
-              () => (Utilities.isValidYoutubeLink(
-                      watchVideoController.youtubeChannel.value))
+              () => (watchVideoController.youtubeChannel.value != "")
                   ? InkWell(
                       onTap: () {
                         Utilities.launchInWebViewWithJavaScript(
