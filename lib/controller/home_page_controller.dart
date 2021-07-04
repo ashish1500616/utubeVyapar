@@ -68,7 +68,7 @@ class HomePageController extends GetxController {
   }
 
   void _checkVersion() {
-    final newVersion = NewVersion(androidId: "com.wowcodes.utubeVyapar");
+    final newVersion = NewVersion(androidId: "com.wowcodes.ytvyapar");
     newVersion.showAlertIfNecessary(context: Get.context!);
   }
 
@@ -76,8 +76,8 @@ class HomePageController extends GetxController {
     await FlutterShare.share(
         title: 'Grow On Youtube,From Flop To Top',
         text:
-            'Grow on Youtube with UtubeVyapar.\nUtubeVyapar platform is dedicated to helping youtubers to get more viewers, with premium and unique features that you can get for free.\n \nStart joining our big network and start getting views in just minutes.',
+            'Grow on Youtube with YtVyapar.\nYtVyapar platform is dedicated to helping youtubers to get more viewers, with premium and unique features that you can get for free.\n \nStart joining our big network and start getting views in just minutes.',
         linkUrl: 'https://wowcodes.tech/',
-        chooserTitle: 'Vyapar on Youtube with UtubeVyapar');
+        chooserTitle: 'Vyapar on Youtube with YtVyapar');
   }
 }

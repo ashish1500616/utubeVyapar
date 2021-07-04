@@ -205,7 +205,7 @@ class _WatchVideoState extends State<WatchVideo> {
               child: Column(
                 children: [
                   Text(
-                    "We credit 100 VyaparCoins for every video you watch & We debit 100 VyaparCoins for every view by a user on the UtubeVyapar Network.",
+                    "We credit 100 VyaparCoins for every video you watch & We debit 100 VyaparCoins for every view by a user on the YtVyapar Network.",
                     style: TextStyle(
                         color: Colors.blue.shade300,
                         fontSize: 15,
@@ -236,7 +236,7 @@ class _WatchVideoState extends State<WatchVideo> {
               child: Column(
                 children: [
                   Text(
-                    "Please add your channel under Home -> Promote Your Channel,  if not added yet to get subscribers from UtubeVyapar network.",
+                    "Please add your channel under Home -> Promote Your Channel,  if not added yet to get subscribers from YtVyapar network.",
                     style: TextStyle(
                         color: Colors.blue.shade300,
                         fontSize: 15,

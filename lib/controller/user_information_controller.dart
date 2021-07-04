@@ -95,7 +95,7 @@ class UserInformationController extends GetxController {
         if (response.statusCode == 200) {
           Get.back();
           Get.snackbar("Success",
-              "Youtube channel link for your profile has been updated. Thank's for using UtubeVyapar",
+              "Youtube channel link for your profile has been updated. Thank's for using YtVyapar",
               backgroundColor: Colors.red.shade100,
               snackPosition: SnackPosition.BOTTOM);
         } else {

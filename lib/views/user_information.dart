@@ -217,7 +217,7 @@ class UserInformation extends StatelessWidget {
             child: const Padding(
               padding: EdgeInsets.fromLTRB(20, 5, 5, 5),
               child: const Text(
-                "Thanks for using UtubeVyapar.\n",
+                "Thanks for using YtVyapar.\n",
                 style: TextStyle(
                     color: Colors.black87, fontSize: 10, letterSpacing: 1),
               ),

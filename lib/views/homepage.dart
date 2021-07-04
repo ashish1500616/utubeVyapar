@@ -287,7 +287,7 @@ class HomePage extends StatelessWidget {
                         height: 30,
                       ),
                       new Text(
-                        "UtubeVyapar platform is dedicated to helping social media content creators to get more viewers, with premium and unique features that you can get for free.\n \nStart joining our big network and start getting views in just minutes.",
+                        "YtVyapar platform is dedicated to helping social media content creators to get more viewers, with premium and unique features that you can get for free.\n \nStart joining our big network and start getting views in just minutes.",
                         textAlign: TextAlign.left,
                         style: TextStyle(
                             fontSize: 15,
