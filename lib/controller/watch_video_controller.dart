@@ -5,6 +5,7 @@ import 'package:utubevyappar/services/fetch_user_service.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class WatchVideoController extends GetxController {
+  final YT_YOUTUBE_URL = "https://youtu.be/aZUGnReZ5rI";
   CountDownController _timerController = CountDownController();
   FetchUserService fetchUserService = Get.put(FetchUserService());
 
@@ -23,9 +24,7 @@ class WatchVideoController extends GetxController {
     /*WebView.platform = SurfaceAndroidWebView();*/
     youtubePlayerController = YoutubePlayerController(
       // TODO:  Change hard coded initial video to constant
-      initialVideoId:
-          YoutubePlayer.convertUrlToId("https://youtu.be/b-wtOYN4P1Y")
-              .toString(),
+      initialVideoId: YoutubePlayer.convertUrlToId(YT_YOUTUBE_URL).toString(),
       flags: YoutubePlayerFlags(
         enableCaption: false,
         disableDragSeek: true,

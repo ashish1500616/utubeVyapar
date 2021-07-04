@@ -32,7 +32,7 @@ class Welcome extends StatelessWidget {
               height: MediaQuery.of(context).size.height * .45,
             ),
             Text(
-              "Helping Creators \nTo get unique & organic Viewers",
+              "Helping Creators \nTo get unique & organic viewers",
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontWeight: FontWeight.w500,
@@ -41,7 +41,7 @@ class Welcome extends StatelessWidget {
                   letterSpacing: 1),
             ),
             Text(
-              "UtubeVyapar",
+              "YtVyapar",
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontWeight: FontWeight.w600,
@@ -84,11 +84,11 @@ class Welcome extends StatelessWidget {
             Center(
                 child: RichText(
               text: TextSpan(
-                text: 'Privacy Policy ',
+                text: 'By continuing you agree to the ',
                 style: TextStyle(fontSize: 10, color: Colors.black),
                 children: <TextSpan>[
                   TextSpan(
-                      text: 'Click to read',
+                      text: 'terms and conditions',
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           Utilities.launchInWebViewWithJavaScript(

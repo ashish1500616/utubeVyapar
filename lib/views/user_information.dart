@@ -112,7 +112,11 @@ class UserInformation extends StatelessWidget {
             child: FormBuilder(
               key: userInformationController.formKey,
               child: FormBuilderChoiceChip(
+                spacing: 3,
+                backgroundColor: Colors.yellow.shade50,
+                selectedColor: Colors.deepOrange.shade100,
                 name: 'channel_category_choice_chip',
+                labelStyle: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
                   labelText: 'Select a channel category',
                 ),

@@ -80,7 +80,7 @@ class CreateCampaign extends StatelessWidget {
                           ),
                           hintStyle: const TextStyle(
                               fontSize: 16.0, color: Colors.black87),
-                          hintText: 'Paste your link here',
+                          hintText: 'Paste your video link here',
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 20.0),
                           border: OutlineInputBorder(
@@ -118,6 +118,10 @@ class CreateCampaign extends StatelessWidget {
                 child: FormBuilder(
                   key: createCampaignController.formKey,
                   child: FormBuilderChoiceChip(
+                    spacing: 3,
+                    backgroundColor: Colors.yellow.shade50,
+                    selectedColor: Colors.deepOrange.shade100,
+                    labelStyle: TextStyle(color: Colors.black),
                     name: 'choice_chip',
                     decoration: InputDecoration(
                       labelText: 'Select a category',
