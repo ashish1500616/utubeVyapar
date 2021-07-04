@@ -74,10 +74,12 @@ class CreateCampaignController extends GetxController {
   }
 
   bool validate() {
-    if (youtube_video_link_text_controller.text.isNotEmpty) {
+    if (youtube_video_link_text_controller.text.isNotEmpty &&
+        !youtube_video_link_text_controller.text
+            .contains(new RegExp(r'channel', caseSensitive: false))) {
       return true;
     } else {
-      Get.snackbar("Error", "Youtube video link cant be empty.",
+      Get.snackbar("Error", "Invalid video link or empty.",
           backgroundColor: Colors.red.shade100,
           snackPosition: SnackPosition.BOTTOM);
       return false;

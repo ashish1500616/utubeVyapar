@@ -64,10 +64,12 @@ class UserInformationController extends GetxController {
   }
 
   bool validate() {
-    if (youtube_channel_link.text.isNotEmpty) {
+    if (youtube_channel_link.text.isNotEmpty &&
+        youtube_channel_link.text
+            .contains(new RegExp(r'channel', caseSensitive: false))) {
       return true;
     } else {
-      Get.snackbar("Error", "Youtube channel link cant be empty.",
+      Get.snackbar("Error", "Invalid link or empty.",
           backgroundColor: Colors.red.shade100,
           snackPosition: SnackPosition.BOTTOM);
       return false;
