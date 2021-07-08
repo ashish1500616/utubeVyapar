@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -38,15 +40,22 @@ class Utilities {
   }
 
   static Future<void> launchInWebViewWithJavaScript(url) async {
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceSafariVC: true,
-        forceWebView: true,
-        enableJavaScript: true,
-      );
+    if (Platform.isIOS) {
+      if (await canLaunch('youtube://$url')) {
+        await launch('youtube://$url', forceSafariVC: false);
+      } else {
+        if (await canLaunch(url)) {
+          await launch(url);
+        } else {
+          throw 'Could not launch';
+        }
+      }
     } else {
-      throw 'Could not launch $url';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
     }
   }
 }
