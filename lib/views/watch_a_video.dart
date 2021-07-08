@@ -169,37 +169,49 @@ class _WatchVideoState extends State<WatchVideo> {
                         Utilities.launchInWebViewWithJavaScript(
                             watchVideoController.getYoutubeChannelLink());
                       },
-                      child: Container(
-                        width: _mediaQuery.width * 0.5,
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: Card(
-                                child: Image.asset(
-                                  "assets/images/subscribe.png",
-                                  fit: BoxFit.scaleDown,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              "Click to subscribe",
-                              textAlign: TextAlign.left,
+                      child: Column(
+                        children: [
+                          Text("Please login with your account to subscribe",
                               style: const TextStyle(
-                                fontSize: 20,
-                                fontFamily: 'Open Sans',
+                                fontSize: 10,
                                 fontWeight: FontWeight.normal,
-                              ),
-                            )
-                          ],
-                        ),
+                              )),
+                          Text("Together we grow divided we fall",
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              )),
+                          Container(
+                            width: _mediaQuery.width * 0.5,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(5),
+                                  child: Card(
+                                    child: Image.asset(
+                                      "assets/images/subscribe.png",
+                                      fit: BoxFit.scaleDown,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  "Click to subscribe",
+                                  textAlign: TextAlign.left,
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: 'Open Sans',
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     )
                   : Container(),
             ),
-            Divider(
-              height: 2,
-            ),
+            SizedBox(height: 10,),
             Padding(
               padding: EdgeInsets.all(20),
               child: Column(
