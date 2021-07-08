@@ -10,6 +10,9 @@ class HomePageController extends GetxController {
       Get.put(UserInformationController());
   var isNewUser = false.obs;
   late BannerAd bannerAdFirst;
+  var isBannerAdFirstReady = false.obs;
+  // Is not used any where to check if it works in the real time or not.
+  var isBannerAdSecondReady = false.obs;
   late BannerAd bannerAdSecond;
 
   @override
@@ -28,10 +31,12 @@ class HomePageController extends GetxController {
           // Called when an ad is successfully received.
           onAdLoaded: (Ad ad) => () {
             print('Ad loaded.');
+            isBannerAdFirstReady.value = true;
           },
           onAdFailedToLoad: (Ad ad, LoadAdError error) {
             // Dispose the ad here to free resources.
             // ad.dispose();
+            isBannerAdFirstReady.value = false;
             print('Ad failed to load: $error');
           },
           onAdOpened: (Ad ad) => print('Ad opened.'),
@@ -49,10 +54,12 @@ class HomePageController extends GetxController {
         listener: BannerAdListener(
           onAdLoaded: (Ad ad) => () {
             print('Ad loaded.');
+            isBannerAdSecondReady.value = true;
           },
           onAdFailedToLoad: (Ad ad, LoadAdError error) {
             // ad.dispose();
             print('Ad failed to load: $error');
+            isBannerAdSecondReady.value = false;
           },
           onAdOpened: (Ad ad) => print('Ad opened.'),
           onAdClosed: (Ad ad) => print('Ad closed.'),

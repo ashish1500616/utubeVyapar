@@ -14,12 +14,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     HomePageController homePageController = Get.put(HomePageController());
     String currentUserName =
-        FirebaseAuth.instance.currentUser!.displayName.toString();
+    FirebaseAuth.instance.currentUser!.displayName.toString();
     currentUserName = currentUserName[0].toUpperCase() +
         currentUserName.substring(1).toLowerCase();
     homePageController.createAndLoadFirstBannerAd();
     homePageController.createAndLoadSecondBannerAd();
-    final _mediaQuery = MediaQuery.of(context).size;
+    final _mediaQuery = MediaQuery
+        .of(context)
+        .size;
     return Scaffold(
       appBar: AppBar(
         title: Text("YtVyapar"),
@@ -68,7 +70,8 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
-                    onTap: () async => {
+                    onTap: () async =>
+                    {
                       /*(homePageController.isInterstitialAdReady.isTrue)*/
                       Get.toNamed("/watchVideo"),
                     },
@@ -141,11 +144,18 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Container(
-                alignment: Alignment.center,
-                child: AdWidget(ad: homePageController.bannerAdFirst),
-                width: homePageController.bannerAdFirst.size.width.toDouble(),
-                height: homePageController.bannerAdFirst.size.height.toDouble(),
+              Obx(
+                    () =>
+                (homePageController.isBannerAdFirstReady.value == true)
+                    ? Container(
+                  alignment: Alignment.center,
+                  child: AdWidget(ad: homePageController.bannerAdFirst),
+                  width: homePageController.bannerAdFirst.size.width
+                      .toDouble(),
+                  height: homePageController.bannerAdFirst.size.height
+                      .toDouble(),
+                )
+                    : Container(),
               ),
               SizedBox(
                 height: 10,
@@ -266,9 +276,10 @@ class HomePage extends StatelessWidget {
               Container(
                 alignment: Alignment.center,
                 child: AdWidget(ad: homePageController.bannerAdSecond),
-                width: homePageController.bannerAdSecond.size.width.toDouble(),
-                height:
-                    homePageController.bannerAdSecond.size.height.toDouble(),
+                width: homePageController.bannerAdSecond.size.width
+                    .toDouble(),
+                height: homePageController.bannerAdSecond.size.height
+                    .toDouble(),
               ),
               SizedBox(
                 height: 10,
