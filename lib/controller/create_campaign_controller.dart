@@ -14,7 +14,7 @@ class CreateCampaignController extends GetxController {
       TextEditingController();
 
   // promote video unit
-  static const BANNER_UNIT_4 = "ca-app-pub-5225835586845251/8199360278";
+  static const BANNER_UNIT_4 = "ca-app-pub-5225835586845251/8097559555";
   late BannerAd bannerAdFourth;
   var formKey = GlobalKey<FormBuilderState>();
 

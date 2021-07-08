@@ -16,7 +16,7 @@ class UserInformationController extends GetxController {
 
   // promote youtube channel unit
   late BannerAd bannerAdFifth;
-  static const BANNER_UNIT_5 = "ca-app-pub-5225835586845251/3049307078";
+  static const BANNER_UNIT_5 = "ca-app-pub-5225835586845251/4324360721";
 
   @override
   void onInit() {

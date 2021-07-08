@@ -12,10 +12,10 @@ class HomePageController extends GetxController {
   late BannerAd bannerAdSecond;
 
   // home page unit 1
-  static const BANNER_UNIT_1 = "ca-app-pub-5225835586845251/9410986702";
+  static const BANNER_UNIT_1 = "ca-app-pub-5225835586845251/8199192409";
 
   // home page unit 2
-  static const BANNER_UNIT_2 = "ca-app-pub-5225835586845251/9259777616";
+  static const BANNER_UNIT_2 = "ca-app-pub-3940256099942544/6300978111";
 
   @override
   void onInit() {

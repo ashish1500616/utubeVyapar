@@ -4,7 +4,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 class AdsController extends GetxController {
   // interstitial unit
   late InterstitialAd myInterstitial;
-  static const INTERSTITIAL_UNIT_1 = "ca-app-pub-5225835586845251/8926651414";
+  static const INTERSTITIAL_UNIT_1 = "ca-app-pub-5225835586845251/4158314540";
   bool isInterstitialAdLoaded = false;
 
   @override

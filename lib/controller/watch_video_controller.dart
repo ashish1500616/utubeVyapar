@@ -11,7 +11,7 @@ class WatchVideoController extends GetxController {
 
   // watch page unit
   late BannerAd bannerAdThird;
-  static const BANNER_UNIT_3 = "ca-app-pub-5225835586845251/2552814756";
+  static const BANNER_UNIT_3 = "ca-app-pub-5225835586845251/8263605739";
   late YoutubePlayerController youtubePlayerController;
   var currentPoint = "0".obs;
   var currentDuration = 15.obs;
