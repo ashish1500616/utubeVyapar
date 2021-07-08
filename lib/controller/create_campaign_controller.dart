@@ -7,6 +7,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:http/http.dart' as http;
+import 'package:utubevyappar/controller/ads_controller.dart';
 import 'package:utubevyappar/controller/utilities.dart';
 
 class CreateCampaignController extends GetxController {
@@ -14,7 +15,6 @@ class CreateCampaignController extends GetxController {
       TextEditingController();
 
   // promote video unit
-  static const BANNER_UNIT_4 = "ca-app-pub-5225835586845251/8097559555";
   late BannerAd bannerAdFourth;
   var formKey = GlobalKey<FormBuilderState>();
 
@@ -88,7 +88,7 @@ class CreateCampaignController extends GetxController {
 
   createAndLoadFourthBannerAd() {
     bannerAdFourth = BannerAd(
-        adUnitId: BANNER_UNIT_4,
+        adUnitId: AdsController.BANNER_UNIT_4,
         request: AdRequest(),
         size: AdSize.largeBanner,
         listener: BannerAdListener(

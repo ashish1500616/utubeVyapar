@@ -2,6 +2,7 @@ import 'package:flutter_share/flutter_share.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:new_version/new_version.dart';
+import 'package:utubevyappar/controller/ads_controller.dart';
 import 'package:utubevyappar/controller/user_information_controller.dart';
 
 class HomePageController extends GetxController {
@@ -10,12 +11,6 @@ class HomePageController extends GetxController {
   var isNewUser = false.obs;
   late BannerAd bannerAdFirst;
   late BannerAd bannerAdSecond;
-
-  // home page unit 1
-  static const BANNER_UNIT_1 = "ca-app-pub-5225835586845251/8199192409";
-
-  // home page unit 2
-  static const BANNER_UNIT_2 = "ca-app-pub-3940256099942544/6300978111";
 
   @override
   void onInit() {
@@ -26,7 +21,7 @@ class HomePageController extends GetxController {
 
   void createAndLoadFirstBannerAd() {
     bannerAdFirst = BannerAd(
-        adUnitId: BANNER_UNIT_1,
+        adUnitId: AdsController.BANNER_UNIT_1,
         request: AdRequest(),
         size: AdSize.largeBanner,
         listener: BannerAdListener(
@@ -48,7 +43,7 @@ class HomePageController extends GetxController {
 
   void createAndLoadSecondBannerAd() {
     bannerAdSecond = BannerAd(
-        adUnitId: BANNER_UNIT_2,
+        adUnitId: AdsController.BANNER_UNIT_2,
         request: AdRequest(),
         size: AdSize.largeBanner,
         listener: BannerAdListener(

@@ -5,6 +5,11 @@ class AdsController extends GetxController {
   // interstitial unit
   late InterstitialAd myInterstitial;
   static const INTERSTITIAL_UNIT_1 = "ca-app-pub-5225835586845251/4158314540";
+  static const BANNER_UNIT_1 = "ca-app-pub-5225835586845251/8199192409";
+  static const BANNER_UNIT_2 = "ca-app-pub-5225835586845251/5662967907";
+  static const BANNER_UNIT_3 = "ca-app-pub-5225835586845251/8263605739";
+  static const BANNER_UNIT_4 = "ca-app-pub-5225835586845251/8097559555";
+  static const BANNER_UNIT_5 = "ca-app-pub-5225835586845251/4324360721";
   bool isInterstitialAdLoaded = false;
 
   @override

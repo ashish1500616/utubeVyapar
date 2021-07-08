@@ -7,6 +7,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:http/http.dart' as http;
+import 'package:utubevyappar/controller/ads_controller.dart';
 import 'package:utubevyappar/controller/utilities.dart';
 
 class UserInformationController extends GetxController {
@@ -16,7 +17,6 @@ class UserInformationController extends GetxController {
 
   // promote youtube channel unit
   late BannerAd bannerAdFifth;
-  static const BANNER_UNIT_5 = "ca-app-pub-5225835586845251/4324360721";
 
   @override
   void onInit() {
@@ -33,7 +33,7 @@ class UserInformationController extends GetxController {
 
   createAndLoadFifthBannerAd() {
     bannerAdFifth = BannerAd(
-        adUnitId: BANNER_UNIT_5,
+        adUnitId: AdsController.BANNER_UNIT_5,
         request: AdRequest(),
         size: AdSize.largeBanner,
         listener: BannerAdListener(

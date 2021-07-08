@@ -1,6 +1,7 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:utubevyappar/controller/ads_controller.dart';
 import 'package:utubevyappar/services/fetch_user_service.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -11,7 +12,6 @@ class WatchVideoController extends GetxController {
 
   // watch page unit
   late BannerAd bannerAdThird;
-  static const BANNER_UNIT_3 = "ca-app-pub-5225835586845251/8263605739";
   late YoutubePlayerController youtubePlayerController;
   var currentPoint = "0".obs;
   var currentDuration = 15.obs;
@@ -98,7 +98,7 @@ class WatchVideoController extends GetxController {
 
   createAndLoadThirdBannerAd() {
     bannerAdThird = BannerAd(
-        adUnitId: BANNER_UNIT_3,
+        adUnitId: AdsController.BANNER_UNIT_3,
         request: AdRequest(),
         size: AdSize.largeBanner,
         listener: BannerAdListener(
